@@ -49,7 +49,7 @@ def parse_markdown(md_text):
     if not week_num or week_num.lower() in ["not provided", "n/a", "tbd"]:
         week_num = "1"
     data['week_no'] = week_num
-    data['week_ending_date'] = get_field(r'\*\*(?:Week Ending Date|Report Date):\*\*\s*(.*?)\n', "N/A")
+    data['week_ending_date'] = get_field(r'\*\*Week Ending Date:\*\*\s*(.*?)\n', get_field(r'\*\*(?:Report Date):\*\*\s*(.*?)\n', "N/A"))
     
     # Overall Status (strip HTML comments if any)
     raw_status = get_field(r'\*\*(?:Overall Status|Overall RAG Status|Project Status|RAG Status):\*\*\s*(.*?)\n', "GREEN")
