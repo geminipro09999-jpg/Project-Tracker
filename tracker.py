@@ -29,7 +29,7 @@ def parse_markdown(md_text):
     data['company'] = get_field(r'\*\*(?:Company):\*\*\s*(.*?)\n', "TIC INCUBATOR")
     
     proj_id = get_field(r'\*\*(?:Project ID):\*\*\s*(.*?)\n', "N/A")
-    data['project_id'] = proj_id if proj_id not in ["N/A / Not Provided", "N/A", ""] else ""
+    data['project_id'] = proj_id if proj_id not in ["N/A / Not Provided", "N/A", "TBD", ""] else ""
 
     data['client'] = get_field(r'\*\*(?:Client):\*\*\s*(.*?)\n', "CLIENT")
     
@@ -42,7 +42,9 @@ def parse_markdown(md_text):
         data['project_id'] = slug[:16]
 
     data['current_release'] = get_field(r'\*\*(?:Current Release / Phase|Current Release):\*\*\s*(.*?)\n', "RELEASE 1")
-    data['week_no'] = get_field(r'\*\*(?:Week No):\*\*\s*(.*?)\n', "1")
+    raw_week = get_field(r'\*\*(?:Week No):\*\*\s*(.*?)\n', "1")
+    week_num = re.sub(r'(?i)week\s*', '', raw_week).strip()
+    data['week_no'] = week_num if week_num else "1"
     data['week_ending_date'] = get_field(r'\*\*(?:Week Ending Date):\*\*\s*(.*?)\n', "N/A")
     
     # Overall Status (strip HTML comments if any)

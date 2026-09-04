@@ -753,7 +753,7 @@
       data.company = getField('\\*\\*(?:Company):\\*\\*\\s*(.*?)\\n', 'TIC INCUBATOR');
 
       let pId = getField('\\*\\*(?:Project ID):\\*\\*\\s*(.*?)\\n', '');
-      if(!pId || pId.includes('N/A')) { pId = ''; }
+      if(!pId || pId.includes('N/A') || pId.includes('TBD')) { pId = ''; }
 
       data.client = getField('\\*\\*(?:Client):\\*\\*\\s*(.*?)\\n', 'CLIENT');
 
@@ -766,7 +766,9 @@
       data.project_id = pId;
 
       data.current_release = getField('\\*\\*(?:Current Release \/ Phase|Current Release):\\*\\*\\s*(.*?)\\n', 'RELEASE 1');
-      data.week_no = getField('\\*\\*(?:Week No):\\*\\*\\s*(.*?)\\n', '1');
+      let rawWeek = getField('\\*\\*(?:Week No):\\*\\*\\s*(.*?)\\n', '1');
+      let weekNum = rawWeek.replace(/week\s*/i, '').trim();
+      data.week_no = weekNum || '1';
       data.week_ending_date = getField('\\*\\*(?:Week Ending Date):\\*\\*\\s*(.*?)\\n', 'N/A');
 
       let rawStatus = getField('\\*\\*(?:Overall Status|Overall RAG Status|Project Status):\\*\\*\\s*(.*?)\\n', 'GREEN');
