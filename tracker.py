@@ -79,6 +79,13 @@ def parse_markdown(md_text):
                     "allocation_days": cols[2],
                     "responsibility": cols[3]
                 })
+            elif len(cols) >= 2:
+                resources.append({
+                    "name": cols[0],
+                    "role": cols[1],
+                    "allocation_days": "N/A",
+                    "responsibility": cols[1]
+                })
     data['resources'] = resources
 
     # Section 1: Scope & Release Journey

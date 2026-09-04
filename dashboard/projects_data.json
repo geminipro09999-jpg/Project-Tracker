@@ -14,32 +14,32 @@
         "week_no": "1",
         "week_ending_date": "04.09.2026",
         "overall_status": "AMBER",
-        "total_allocation_man_days": "128",
+        "total_allocation_man_days": "TBD",
         "release_start_date": "31.08.2026",
         "resources": [
           {
             "name": "Mathusan",
-            "role": "Tenant Admin",
-            "allocation_days": "123 days",
-            "responsibility": "User Roles/Permissions, Outlet & Till Access, Till Authorization, POS Access, Reports R&D"
+            "role": "Tenant Admin  User Roles/Permissions, Outlet & Till Access, Till Authorization, POS Access, Reports R&D",
+            "allocation_days": "N/A",
+            "responsibility": "Tenant Admin  User Roles/Permissions, Outlet & Till Access, Till Authorization, POS Access, Reports R&D"
           },
           {
             "name": "Nivethika",
-            "role": "Product / Tenant Admin",
-            "allocation_days": "35 days",
-            "responsibility": "Product Setup, Category, Units & Pack, Tax, Return Policy, Barcode R&D"
+            "role": "Product / Tenant Admin  Product Setup, Category, Units & Pack, Tax, Return Policy, Barcode R&D",
+            "allocation_days": "N/A",
+            "responsibility": "Product / Tenant Admin  Product Setup, Category, Units & Pack, Tax, Return Policy, Barcode R&D"
           },
           {
             "name": "Yabez",
-            "role": "Platform / Super Admin",
-            "allocation_days": "97 days",
-            "responsibility": "Platform User Management, Capability Registry(modules & future), CI/CD, DB & Email"
+            "role": "Platform / Super Admin  Platform User Management, Capability Registry(modules & future), CI/CD, DB & Email",
+            "allocation_days": "N/A",
+            "responsibility": "Platform / Super Admin  Platform User Management, Capability Registry(modules & future), CI/CD, DB & Email"
           },
           {
             "name": "Tharmithan",
-            "role": "POS / Cashier / Online Order",
-            "allocation_days": "102 days",
-            "responsibility": "Online Order, UI/UX, Permissions, Environment & Build Troubleshooting"
+            "role": "POS / Cashier / Online Order  Online Order, UI/UX, Permissions, Environment & Build Troubleshooting",
+            "allocation_days": "N/A",
+            "responsibility": "POS / Cashier / Online Order  Online Order, UI/UX, Permissions, Environment & Build Troubleshooting"
           }
         ],
         "scope_journey": {
@@ -103,20 +103,20 @@
           "milestones": []
         },
         "effort_summary": {
-          "original_allocation": "128",
+          "original_allocation": "N/A",
           "consumed_to_date": "128 MAN-DAYS",
           "forecast_remaining": "TBD",
           "forecast_total": "TBD",
           "overrun": "TBD",
           "budget_status": "TBD",
-          "consumed_percentage": 85,
+          "consumed_percentage": 90,
           "consumed_text": "128 MAN-DAYS consumed"
         },
         "what_changed_this_week": {
           "schedule_change": "No baseline changes reported.",
           "scope_change": "Bundle / Kit removed, Base SKU manual entry, Permission taxonomy changes, UI/UX changes.",
           "scope_change_tag": "Approved",
-          "effort_change": "3 leave days (Nivethika: 24 & 28 Aug; Yabez: 24 Aug).",
+          "effort_change": "leave days Tharami 31.08,01.09.",
           "note": "Emulator time & Cash Drawer issues fixed, Build environment resolved, Git sync verified."
         },
         "risks_and_attention": {
@@ -187,7 +187,7 @@
           "escalation": "Permission alignment: Blocks POS Login & module access; DB migration: Potential release blocker; Barcode feasibility: Product Owner; Return Policy finalization: Cross-module contract risk; Online Order completion: Online Order flow still partial"
         },
         "at_a_glance": {
-          "overall_progress_percent": 85,
+          "overall_progress_percent": 90,
           "time_elapsed_percent": 0,
           "effort_consumed_percent": 0,
           "insight_note": "Project update received."
