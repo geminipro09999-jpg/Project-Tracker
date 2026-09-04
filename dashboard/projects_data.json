@@ -551,17 +551,17 @@
       }
     }
   },
-  "CUSTOMER_MOBILE_": {
-    "project_id": "CUSTOMER_MOBILE_",
-    "project_name": "CUSTOMER MOBILE APP",
+  "GREYHOUND_APP": {
+    "project_id": "GREYHOUND_APP",
+    "project_name": "GREYHOUND CUSTOMER MOBILE APP",
     "company": "TIC INCUBATOR",
     "client": "GREYHOUND DOG RACE",
     "weeks": {
       "2": {
         "company": "TIC INCUBATOR",
-        "project_id": "CUSTOMER_MOBILE_",
+        "project_id": "GREYHOUND_APP",
         "client": "GREYHOUND DOG RACE",
-        "project_name": "CUSTOMER MOBILE APP",
+        "project_name": "GREYHOUND CUSTOMER MOBILE APP",
         "current_release": "PHASE 1",
         "week_no": "2",
         "week_ending_date": "28 AUGUST 2026",

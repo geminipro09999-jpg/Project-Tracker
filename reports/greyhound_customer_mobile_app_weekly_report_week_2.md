@@ -4,9 +4,9 @@
 
 ## PROJECT METADATA
 - **Company:** TIC INCUBATOR
-- **Project ID:** N/A
+- **Project ID:** GREYHOUND_APP
 - **Client:** GREYHOUND DOG RACE
-- **Project Name:** CUSTOMER MOBILE APP
+- **Project Name:** GREYHOUND CUSTOMER MOBILE APP
 - **Current Release:** PHASE 1
 - **Week No:** 2
 - **Reporting Period:** 17–28 AUGUST 2026
