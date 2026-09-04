@@ -100,6 +100,48 @@
       max-width: 260px;
     }
 
+    /* Empty State Screen */
+    .empty-state-wrapper {
+      max-width: 800px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 50px 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      border: 2px dashed #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .empty-state-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #eff6ff;
+      color: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    .empty-state-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0f2744;
+    }
+
+    .empty-state-sub {
+      font-size: 0.9rem;
+      color: #64748b;
+      max-width: 540px;
+      line-height: 1.5;
+    }
+
+    /* Main Visibility Card Container */
     .card-wrapper {
       max-width: 1280px;
       margin: 20px auto;
@@ -108,6 +150,7 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       overflow: hidden;
       border: 2px solid #0f2744;
+      display: none;
     }
 
     .card-header-bar {
@@ -297,7 +340,21 @@
     </div>
   </div>
 
-  <!-- Main Executive Visibility Card -->
+  <!-- Empty State Screen when no projects exist -->
+  <div class="empty-state-wrapper" id="emptyStateScreen">
+    <div class="empty-state-icon">
+      <i class="fa-solid fa-folder-plus"></i>
+    </div>
+    <div class="empty-state-title">No Project Reports Loaded Yet</div>
+    <div class="empty-state-sub">
+      Welcome to the Executive Visibility Portal! Upload your Dev Team's Markdown (.md) or JSON weekly report file to render your Weekly Project Visibility Card instantly.
+    </div>
+    <button class="btn btn-primary" style="padding: 12px 24px; font-size: 0.95rem;" onclick="openModal()">
+      <i class="fa-solid fa-cloud-arrow-up"></i> Upload Dev Team MD Report
+    </button>
+  </div>
+
+  <!-- Main Executive Visibility Card (hidden when empty) -->
   <div class="card-wrapper" id="visibilityCard">
 
     <!-- Card Header -->
@@ -320,19 +377,19 @@
 
     <!-- Metadata Grid -->
     <div class="meta-grid">
-      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-building"></i> Company</div><div class="meta-value" id="valCompany">GOVTECH SOLUTIONS</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-tag"></i> Project ID</div><div class="meta-value" id="valProjectId">OGOV-GTS-002</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-user-tie"></i> Client</div><div class="meta-value" id="valClient">NATIONAL BROADCASTING CORP.</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-folder"></i> Project Name</div><div class="meta-value" id="valProjectName">NBC DIGITAL PLATFORM</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-rocket"></i> Current Release</div><div class="meta-value" id="valCurrentRelease">RELEASE 2</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-calendar-week"></i> Week No.</div><div class="meta-value" id="valWeekNo">36</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-calendar-day"></i> Week Ending (Friday)</div><div class="meta-value" id="valWeekEnding">4 SEPTEMBER 2026</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-building"></i> Company</div><div class="meta-value" id="valCompany">N/A</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-tag"></i> Project ID</div><div class="meta-value" id="valProjectId">N/A</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-user-tie"></i> Client</div><div class="meta-value" id="valClient">N/A</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-folder"></i> Project Name</div><div class="meta-value" id="valProjectName">N/A</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-rocket"></i> Current Release</div><div class="meta-value" id="valCurrentRelease">RELEASE 1</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-calendar-week"></i> Week No.</div><div class="meta-value" id="valWeekNo">1</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="fa-solid fa-calendar-day"></i> Week Ending (Friday)</div><div class="meta-value" id="valWeekEnding">N/A</div></div>
     </div>
 
     <!-- Resource Allocation Table -->
     <div class="resource-section">
       <div class="resource-header-bar">
-        Resource Allocation For This Release (Total Allocated: <span id="resTotalAllocHeader">150</span> Man-Days)
+        Resource Allocation For This Release (Total Allocated: <span id="resTotalAllocHeader">0</span> Man-Days)
       </div>
       <div class="resource-body-grid">
         <div class="table-responsive">
@@ -350,9 +407,9 @@
         </div>
         <div class="total-allocation-box">
           <div class="total-alloc-title">Total Allocation (This Release)</div>
-          <div class="total-alloc-num" id="valTotalManDays">150</div>
+          <div class="total-alloc-num" id="valTotalManDays">0</div>
           <div class="total-alloc-title">MAN-DAYS</div>
-          <div class="total-alloc-sub" style="margin-top:8px;">Released on: <span id="valReleaseStartDate">01 JUL 2026</span></div>
+          <div class="total-alloc-sub" style="margin-top:8px;">Released on: <span id="valReleaseStartDate">N/A</span></div>
         </div>
       </div>
     </div>
@@ -392,16 +449,16 @@
         <div class="section-content">
           <div class="plan-date-row">
             <span><strong>ORIGINAL PLAN</strong></span>
-            <span id="valOrigPlanDates">01 JUL 2026 &mdash; 30 SEP 2026</span>
+            <span id="valOrigPlanDates">N/A</span>
           </div>
           <div class="plan-date-row">
             <span><strong>CURRENT FORECAST</strong></span>
-            <span id="valForecastDates" style="color:var(--red); font-weight:700;">01 JUL 2026 &mdash; 21 OCT 2026</span>
+            <span id="valForecastDates" style="color:var(--red); font-weight:700;">N/A</span>
           </div>
 
           <div class="delay-banner">
-            <div><i class="fa-regular fa-clock"></i> DELAY: <span id="valDelayDays">+21 DAYS</span></div>
-            <div class="delay-tag" id="valScheduleStatus">OFF TRACK</div>
+            <div><i class="fa-regular fa-clock"></i> DELAY: <span id="valDelayDays">0 DAYS</span></div>
+            <div class="delay-tag" id="valScheduleStatus">ON TRACK</div>
           </div>
 
           <div class="table-responsive">
@@ -425,30 +482,30 @@
         <div class="section-title-bar">3. Resource Effort Summary</div>
         <div class="section-content">
           <div class="effort-metrics-grid">
-            <div class="metric-card"><div class="metric-lbl">Original</div><div class="metric-val" id="valOrigAlloc">150</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
-            <div class="metric-card"><div class="metric-lbl">Consumed</div><div class="metric-val" style="color:var(--blue);" id="valConsumed">110</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
-            <div class="metric-card"><div class="metric-lbl">Forecast Rem</div><div class="metric-val" style="color:#d97706;" id="valForecastRem">70</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
-            <div class="metric-card"><div class="metric-lbl">Forecast Total</div><div class="metric-val" style="color:var(--red);" id="valForecastTotal">180</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
+            <div class="metric-card"><div class="metric-lbl">Original</div><div class="metric-val" id="valOrigAlloc">0</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
+            <div class="metric-card"><div class="metric-lbl">Consumed</div><div class="metric-val" style="color:var(--blue);" id="valConsumed">0</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
+            <div class="metric-card"><div class="metric-lbl">Forecast Rem</div><div class="metric-val" style="color:#d97706;" id="valForecastRem">0</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
+            <div class="metric-card"><div class="metric-lbl">Forecast Total</div><div class="metric-val" style="color:var(--red);" id="valForecastTotal">0</div><div style="font-size:0.58rem; color:#64748b;">MAN-DAYS</div></div>
           </div>
 
           <div class="overrun-banner">
             <div>
               <i class="fa-solid fa-tachometer-alt"></i> FORECAST OVERRUN
-              <div class="overrun-text" id="valOverrunText">+30 MAN-DAYS / +20%</div>
+              <div class="overrun-text" id="valOverrunText">0 MAN-DAYS</div>
             </div>
-            <div class="overrun-tag" id="valBudgetStatus">OVER BUDGET</div>
+            <div class="overrun-tag" id="valBudgetStatus">WITHIN BUDGET</div>
           </div>
 
           <div class="progress-bar-container">
             <div class="progress-title">
               <span>EFFORT CONSUMED vs ORIGINAL ALLOCATION</span>
-              <span id="valConsumedPctText">73%</span>
+              <span id="valConsumedPctText">0%</span>
             </div>
             <div class="progress-track">
-              <div class="progress-fill" id="valProgressFill" style="width: 73%;">73%</div>
+              <div class="progress-fill" id="valProgressFill" style="width: 0%;">0%</div>
             </div>
             <div style="font-size:0.65rem; color:#64748b; text-align:center; margin-top:4px;" id="valConsumedSub">
-              110 of 150 man-days consumed
+              0 of 0 man-days consumed
             </div>
           </div>
         </div>
@@ -526,9 +583,9 @@
               <div class="donut-chart">
                 <svg viewBox="0 0 36 36">
                   <path class="donut-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                  <path class="donut-fill blue" id="donutScope" stroke-dasharray="58, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                  <path class="donut-fill blue" id="donutScope" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 </svg>
-                <div class="donut-number" id="numScope">58%</div>
+                <div class="donut-number" id="numScope">0%</div>
               </div>
               <div class="chart-sub">% Scope Complete</div>
             </div>
@@ -538,9 +595,9 @@
               <div class="donut-chart">
                 <svg viewBox="0 0 36 36">
                   <path class="donut-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                  <path class="donut-fill red" id="donutTime" stroke-dasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                  <path class="donut-fill red" id="donutTime" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 </svg>
-                <div class="donut-number" id="numTime">72%</div>
+                <div class="donut-number" id="numTime">0%</div>
               </div>
               <div class="chart-sub">vs Plan</div>
             </div>
@@ -550,9 +607,9 @@
               <div class="donut-chart">
                 <svg viewBox="0 0 36 36">
                   <path class="donut-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                  <path class="donut-fill green" id="donutEffort" stroke-dasharray="73, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                  <path class="donut-fill green" id="donutEffort" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 </svg>
-                <div class="donut-number" id="numEffort">73%</div>
+                <div class="donut-number" id="numEffort">0%</div>
               </div>
               <div class="chart-sub">vs Original Alloc</div>
             </div>
@@ -560,7 +617,7 @@
 
           <div class="insight-callout">
             <i class="fa-solid fa-star" style="color:#d97706;"></i>
-            <span id="valInsightText">Development on track.</span>
+            <span id="valInsightText">No report loaded yet.</span>
           </div>
         </div>
       </div>
@@ -597,7 +654,6 @@
     let projectsStore = {};
     let currentCardData = null;
 
-    // Helper Date calculation functions for automated deadline & variance tracking
     function parseDate(dateStr) {
       if(!dateStr || dateStr === 'N/A') return null;
       const d = new Date(dateStr);
@@ -621,8 +677,9 @@
           return;
         }
       } catch(e) {
-        console.log("Using default fallback data store");
+        console.log("Empty or missing projects store");
       }
+      populateProjectDropdown();
     }
 
     function populateProjectDropdown() {
@@ -631,12 +688,20 @@
       
       const keys = Object.keys(projectsStore);
       if(keys.length === 0) {
+        document.getElementById('emptyStateScreen').style.display = 'flex';
+        document.getElementById('visibilityCard').style.display = 'none';
+
         const opt = document.createElement('option');
         opt.value = "";
         opt.textContent = "No Projects Loaded (Click Upload Dev MD)";
         projSelect.appendChild(opt);
+        
+        document.getElementById('weekSelect').innerHTML = '<option value="">No Weeks</option>';
         return;
       }
+
+      document.getElementById('emptyStateScreen').style.display = 'none';
+      document.getElementById('visibilityCard').style.display = 'block';
 
       keys.forEach(pId => {
         const p = projectsStore[pId];
@@ -652,6 +717,8 @@
 
     function onProjectChange() {
       const pId = document.getElementById('projectSelect').value;
+      if(!pId) return;
+      
       const proj = projectsStore[pId];
       if(!proj || !proj.weeks) return;
 
@@ -682,6 +749,10 @@
     }
 
     function renderCardData(data) {
+      if(!data) return;
+      document.getElementById('emptyStateScreen').style.display = 'none';
+      document.getElementById('visibilityCard').style.display = 'block';
+
       currentCardData = data;
       document.getElementById('cardSubTitle').innerHTML = `WEEK ENDING FRIDAY, ${(data.week_ending_date || '').toUpperCase()} &nbsp;|&nbsp; WEEK ${data.week_no || '1'}`;
       
@@ -776,7 +847,7 @@
         document.getElementById('valOverrunText').textContent = data.effort_summary.overrun;
         document.getElementById('valBudgetStatus').textContent = data.effort_summary.budget_status;
         
-        const pct = data.effort_summary.consumed_percentage || 50;
+        const pct = data.effort_summary.consumed_percentage || 0;
         document.getElementById('valConsumedPctText').textContent = `${pct}%`;
         const fill = document.getElementById('valProgressFill');
         fill.style.width = `${pct}%`;
@@ -814,10 +885,10 @@
 
       // At A Glance Gauges
       if(data.at_a_glance) {
-        setDonut('donutScope', 'numScope', data.at_a_glance.overall_progress_percent);
-        setDonut('donutTime', 'numTime', data.at_a_glance.time_elapsed_percent);
-        setDonut('donutEffort', 'numEffort', data.at_a_glance.effort_consumed_percent);
-        document.getElementById('valInsightText').innerHTML = data.at_a_glance.insight_note;
+        setDonut('donutScope', 'numScope', data.at_a_glance.overall_progress_percent || 0);
+        setDonut('donutTime', 'numTime', data.at_a_glance.time_elapsed_percent || 0);
+        setDonut('donutEffort', 'numEffort', data.at_a_glance.effort_consumed_percent || 0);
+        document.getElementById('valInsightText').innerHTML = data.at_a_glance.insight_note || 'Development on track.';
       }
     }
 
@@ -827,7 +898,10 @@
     }
 
     function downloadCurrentMarkdown() {
-      if (!currentCardData) return;
+      if (!currentCardData) {
+        alert("No project card loaded to download.");
+        return;
+      }
       const d = currentCardData;
       let md = `# WEEKLY PROJECT VISIBILITY CARD\n\n## PROJECT METADATA\n- **Company:** ${d.company || 'GOVTECH SOLUTIONS'}\n- **Project ID:** ${d.project_id || 'PROJ-001'}\n- **Client:** ${d.client || 'CLIENT'}\n- **Project Name:** ${d.project_name || 'PROJECT'}\n- **Current Release:** ${d.current_release || 'RELEASE 1'}\n- **Week No:** ${d.week_no || '1'}\n- **Week Ending Date:** ${d.week_ending_date || 'N/A'}\n- **Overall Status:** ${d.overall_status || 'GREEN'}\n\n---\n\n## RESOURCE ALLOCATION\n- **Total Allocated Man-Days:** ${d.total_allocation_man_days || 100}\n- **Release Start Date:** ${d.release_start_date || 'N/A'}\n\n| Resource Name | Role | Allocation (Man-Days) | Main Responsibility |\n| :--- | :--- | :---: | :--- |\n`;
       (d.resources || []).forEach(r => { md += `| ${r.name} | ${r.role} | ${r.allocation_days} | ${r.responsibility} |\n`; });
@@ -890,7 +964,7 @@
             closeModal();
             alert(`✅ Loaded report for ${data.project_name} - Week ${data.week_no}!`);
           } else {
-            alert(`📄 Markdown report file received! Run: python tracker.py --file ${file.name}`);
+            alert(`📄 Markdown report file received! Run: python tracker.py --file ${file.name} to add it to dashboard.`);
             closeModal();
           }
         } catch (err) {
