@@ -90,6 +90,48 @@
     .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; }
     .btn-outline:hover { background: rgba(255,255,255,0.1); }
 
+    /* Export Dropdown Menu */
+    .dropdown-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      background: white;
+      min-width: 230px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      z-index: 200;
+      overflow: hidden;
+    }
+    .dropdown-menu.show {
+      display: block;
+      animation: fadeIn 0.15s ease-in-out;
+    }
+    .dropdown-item {
+      padding: 10px 16px;
+      color: #1e293b;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.15s;
+    }
+    .dropdown-item:hover {
+      background: #f1f5f9;
+      color: #0f2744;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     select.select-box {
       padding: 8px 12px;
       border-radius: 6px;
@@ -418,15 +460,22 @@
       <label style="font-size: 0.8rem; font-weight: 600; color: #94a3b8;"><i class="fa-solid fa-calendar-week"></i> Week:</label>
       <select id="weekSelect" class="select-box" onchange="onWeekChange()"></select>
 
-      <button class="btn btn-success" onclick="downloadCurrentMarkdown()">
-        <i class="fa-solid fa-file-arrow-down"></i> Download .md Report
-      </button>
-      <button class="btn btn-success" style="background-color: #0d9488;" onclick="exportCardAsImage('jpeg')">
-        <i class="fa-solid fa-file-image"></i> Export JPG Image
-      </button>
-      <button class="btn btn-primary" onclick="exportPDF()">
-        <i class="fa-solid fa-file-pdf"></i> Export PDF (A4 Landscape)
-      </button>
+      <div class="dropdown-wrapper">
+        <button class="btn btn-primary" onclick="toggleExportDropdown(event)">
+          <i class="fa-solid fa-download"></i> Export Report <i class="fa-solid fa-chevron-down" style="margin-left: 4px; font-size: 0.75rem;"></i>
+        </button>
+        <div class="dropdown-menu" id="exportDropdownMenu">
+          <div class="dropdown-item" onclick="exportPDF(); closeExportDropdown();">
+            <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i> Export PDF (A4 Landscape)
+          </div>
+          <div class="dropdown-item" onclick="exportCardAsImage('jpeg'); closeExportDropdown();">
+            <i class="fa-solid fa-file-image" style="color: #0d9488;"></i> Export Image (.jpg)
+          </div>
+          <div class="dropdown-item" onclick="downloadCurrentMarkdown(); closeExportDropdown();">
+            <i class="fa-solid fa-file-code" style="color: #10b981;"></i> Export Markdown (.md)
+          </div>
+        </div>
+      </div>
       <button class="btn btn-outline" onclick="toggleFullScreen()">
         <i class="fa-solid fa-expand"></i> Fullscreen
       </button>
@@ -1540,6 +1589,24 @@
         }
       });
     }
+
+    function toggleExportDropdown(e) {
+      if (e) e.stopPropagation();
+      const menu = document.getElementById('exportDropdownMenu');
+      if (menu) menu.classList.toggle('show');
+    }
+
+    function closeExportDropdown() {
+      const menu = document.getElementById('exportDropdownMenu');
+      if (menu) menu.classList.remove('show');
+    }
+
+    document.addEventListener('click', function(e) {
+      const wrapper = document.querySelector('.dropdown-wrapper');
+      if (wrapper && !wrapper.contains(e.target)) {
+        closeExportDropdown();
+      }
+    });
 
     initDashboard();
   </script>
