@@ -4,11 +4,11 @@
 
 ## PROJECT METADATA
 - **Company:** TIC INCUBATOR
-- **Project ID:** N/A
+- **Project ID:** TICKETING_VENUE_
 - **Client:** OPTIMO SCSTIX
 - **Project Name:** TICKETING VENUE SETUP
 - **Current Release:** PHASE 1
-- **Week No:** 15
+- **Week No:** 2
 - **Week Ending Date:** 4 SEPTEMBER 2026
 - **Reporting Period:** 31 AUGUST - 4 SEPTEMBER 2026
 - **Overall Status:** AMBER <!-- Options: GREEN | AMBER | RED -->
