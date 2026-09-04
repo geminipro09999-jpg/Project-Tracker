@@ -1,4 +1,19 @@
 {
-  "outputDirectory": "dashboard",
-  "cleanUrls": true
+  "version": 2,
+  "builds": [
+    {
+      "src": "dashboard/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "dashboard/projects_data.json",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dashboard/$1"
+    }
+  ]
 }
