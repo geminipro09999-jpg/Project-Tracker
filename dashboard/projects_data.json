@@ -1664,6 +1664,200 @@
           "effort_consumed_percent": 0,
           "insight_note": "TBD"
         }
+      },
+      "6": {
+        "company": "Unicom TIC Incubator",
+        "project_id": "ONEXSO_HRMS",
+        "client": "Internal Product",
+        "project_name": "ONEXSO HRMS",
+        "current_release": "RELEASE 1",
+        "week_no": "6",
+        "week_ending_date": "28 AUGUST 2026",
+        "overall_status": "AMBER",
+        "total_allocation_man_days": "160",
+        "release_start_date": "17 JUL 2026",
+        "resources": [
+          {
+            "name": "Thivaharan",
+            "role": "Project Coordinator",
+            "allocation_days": "40",
+            "responsibility": "Planning, coordination, reporting"
+          },
+          {
+            "name": "Dapiyshanth",
+            "role": "Team Lead",
+            "allocation_days": "50",
+            "responsibility": "Technical leadership, development, integration"
+          },
+          {
+            "name": "Kajaatharan",
+            "role": "Developer",
+            "allocation_days": "35",
+            "responsibility": "Development"
+          },
+          {
+            "name": "Pirakeerthan",
+            "role": "Developer",
+            "allocation_days": "35",
+            "responsibility": "Development"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED BASELINE",
+              "go_live": "",
+              "items": [
+                "None yet - Release 1 is the first release and is currently in progress (not yet gone live)"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "RELEASE 1",
+            "core_modules": [
+              "**Authentication & Security:** 🟢 Strong",
+              "**Tenant Management:** 🟢 Strong",
+              "**Platform Administration:** 🟢 Strong",
+              "**Roles & Permissions:** 🟢 Strong",
+              "**Organization Administration:** 🟢 Strong",
+              "**Employee Management:** 🟡 In Progress",
+              "**Onboarding & Offboarding:** 🟢 Strong",
+              "**Leave Management:** 🟡 In Progress",
+              "**Attendance:** 🟢 Strong",
+              "**Calendar & Scheduling:** 🟡 In Progress",
+              "**Work Management:** 🟡 In Progress",
+              "**Workforce Intelligence:** 🟠 Early",
+              "**Billing & Subscription:** 🟡 In Progress"
+            ],
+            "integrations": [
+              "**Stripe:** Subscription/payment processing and payment event handling — 🟡 Partial - webhooks only, no checkout/payment-initiation flow yet",
+              "**Google Calendar:** External calendar synchronization — 🔴 Not Implemented",
+              "**Microsoft Outlook Calendar:** External calendar synchronization — 🔴 Not Implemented",
+              "**Google (admin SSO):** Platform admin login — 🟢 Implemented",
+              "**GitHub (tenant):** Tenant-user OAuth connect/disconnect — 🟡 Partial - functional but narrow",
+              "**Microsoft / Zoom:** Platform-level OAuth config — 🟠 Config-only - no working tenant SSO/meeting flow yet",
+              "**Email Service - SendGrid / Resend:** Invitations, notifications and system emails — 🟢 Implemented",
+              "**Cloudflare R2:** File/object storage — 🟢 Implemented",
+              "**AWS Rekognition:** Identity verification / biometric liveness — 🟡 Partial - works for enrollment, no recurring/random verification",
+              "**Tray Monitoring Agent:** Workforce activity and device data collection — 🟠 Device authorization/activation groundwork in progress"
+            ],
+            "specific_objectives": [
+              "tenant isolation, tenant lifecycle, platform administration, role & permission framework, subscription/module entitlement structure",
+              "organization structure, employee management, onboarding/offboarding, leave management, attendance management, employee self-service",
+              "company and individual calendar, recurring events, participant management, conflict detection, leave/training/review-related calendar events",
+              "projects, objectives and milestones, tasks, sprints, Kanban-based execution. Remaining gaps: time tracking, reporting, and some progress-calculation capabilities",
+              "application/activity data collection, device-state information, productivity scoring, screenshots, identity verification, exception detection, wellness-related nudges - the product direction is \"Work Context Intelligence\" (connecting activity data with work context), not plain employee monitoring",
+              "subscription plans, module entitlements, invoice management, payment event handling, Stripe integration foundation. Remaining: actual Stripe checkout/payment initiation and subscription lifecycle APIs",
+              "production cloud environment, domain configuration, SSL/HTTPS, deployment pipeline, monitoring/logging, security validation, performance validation, final UAT, release sign-off",
+              "*Executive summary:** The current release is focused on establishing ONEXSO's core SaaS, HR, workforce management and workforce intelligence foundations, while completing the remaining integrations, production-readiness activities and selected operational capabilities required for release."
+            ]
+          },
+          "future_releases": [
+            {
+              "name": "NEXT STAGE / FUTURE",
+              "planned_start": "Planned",
+              "items": [
+                "**RELEASE 2 (candidate scope, pending confirmation)** - drawn from the current known gap list: Work Management time tracking, subtasks and Productivity Validation; Work Management/Organization reports & dashboards; Support Center backend; Stripe checkout/payment-collection flow; Google/Outlook calendar sync; Device Administration (asset inventory); data-privacy workflows (DSAR/retention); centralized audit trail; global search; System Control (maintenance mode/job control/release tracking)",
+                "--"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "17 JUL 2026",
+          "original_plan_end": "21 AUG 2026",
+          "current_forecast_start": "17 JUL 2026",
+          "current_forecast_end": "04 SEP 2026",
+          "delay_days": "+14 DAYS",
+          "schedule_status": "DELAYED",
+          "milestones": [
+            {
+              "milestone": "Requirements Complete",
+              "original_plan": "17 Jul 2026",
+              "current_forecast": "17 Jul 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Development Complete",
+              "original_plan": "20 Jul 2026",
+              "current_forecast": "20 Jul 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "System Test Complete",
+              "original_plan": "14 Aug 2026",
+              "current_forecast": "21 Aug 2026",
+              "variance": "+7 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "UAT Complete",
+              "original_plan": "21 Aug 2026",
+              "current_forecast": "28 Aug 2026",
+              "variance": "+7 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Go-Live",
+              "original_plan": "21 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "+14 days",
+              "status": "RED"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "160",
+          "consumed_to_date": "112 MAN-DAYS",
+          "forecast_remaining": "48 MAN-DAYS",
+          "forecast_total": "160 MAN-DAYS",
+          "overrun": "0 MAN-DAYS",
+          "budget_status": "WITHIN BUDGET",
+          "consumed_percentage": 70,
+          "consumed_text": "112/160 MAN-DAYS"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No schedule change reported.",
+          "scope_change": "None this week",
+          "scope_change_tag": "Approved",
+          "effort_change": "None this week",
+          "note": "Google/Outlook OAuth configuration exists, but actual calendar synchronization is **not implemented yet**."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Production infrastructure not started - domain, SSL, hosting, monitoring, and backup are all pending",
+              "severity": "HIGH"
+            },
+            {
+              "description": "No production UAT has been performed yet",
+              "severity": "HIGH"
+            },
+            {
+              "description": "Stripe checkout/payment-collection flow missing - billing can invoice but cannot self-serve collect payment yet",
+              "severity": "MEDIUM/HIGH"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Approve domain name",
+              "due_date": "for production deployment"
+            },
+            {
+              "description": "Approve production database engine",
+              "due_date": "(PostgreSQL or MySQL)"
+            }
+          ],
+          "escalation": "Production infrastructure setup requires immediate domain and cloud environment decision.\n\n---"
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 70,
+          "time_elapsed_percent": 70,
+          "effort_consumed_percent": 70,
+          "insight_note": "Core SaaS & HR modules are strong; production infra, UAT, and Stripe self-serve payment flows are critical pending items."
+        }
       }
     }
   }
