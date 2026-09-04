@@ -33,7 +33,7 @@ def parse_markdown(md_text):
 
     data['client'] = get_field(r'\*\*(?:Client):\*\*\s*(.*?)\n', "CLIENT")
     
-    proj_name = get_field(r'\*\*(?:Project Name):\*\*\s*(.*?)\n', "PROJECT NAME")
+    proj_name = get_field(r'\*\*(?:Project Name|Project):\*\*\s*(.*?)\n', "PROJECT NAME")
     data['project_name'] = proj_name
 
     # If project_id is empty, create a clean slug from project_name
@@ -44,11 +44,13 @@ def parse_markdown(md_text):
     data['current_release'] = get_field(r'\*\*(?:Current Release / Phase|Current Release):\*\*\s*(.*?)\n', "RELEASE 1")
     raw_week = get_field(r'\*\*(?:Week No):\*\*\s*(.*?)\n', "1")
     week_num = re.sub(r'(?i)week\s*', '', raw_week).strip()
-    data['week_no'] = week_num if week_num else "1"
-    data['week_ending_date'] = get_field(r'\*\*(?:Week Ending Date):\*\*\s*(.*?)\n', "N/A")
+    if not week_num or week_num.lower() in ["not provided", "n/a", "tbd"]:
+        week_num = "1"
+    data['week_no'] = week_num
+    data['week_ending_date'] = get_field(r'\*\*(?:Week Ending Date|Report Date):\*\*\s*(.*?)\n', "N/A")
     
     # Overall Status (strip HTML comments if any)
-    raw_status = get_field(r'\*\*(?:Overall Status|Overall RAG Status|Project Status):\*\*\s*(.*?)\n', "GREEN")
+    raw_status = get_field(r'\*\*(?:Overall Status|Overall RAG Status|Project Status|RAG Status):\*\*\s*(.*?)\n', "GREEN")
     raw_status = re.sub(r'<!--.*?-->', '', raw_status).strip().upper()
     if "GREEN" in raw_status:
         data['overall_status'] = "GREEN"
@@ -59,7 +61,7 @@ def parse_markdown(md_text):
 
     # Resource Allocation
     data['total_allocation_man_days'] = get_field(r'\*\*(?:Total Allocated Man-Days):\*\*\s*(.*?)\n', "TBD")
-    data['release_start_date'] = get_field(r'\*\*(?:Release Start Date|Original Start Date):\*\*\s*(.*?)\n', "N/A")
+    data['release_start_date'] = get_field(r'\*\*(?:Release Start Date|Original Start Date|Start Date):\*\*\s*(.*?)\n', "N/A")
 
     # Resource Table
     resources = []
@@ -90,11 +92,11 @@ def parse_markdown(md_text):
     }
 
     # Delivered Releases
-    deliv_match = re.search(r'###\s*(?:Delivered Releases|Delivered / Completed|Previous / Available|Completed This Period).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    deliv_match = re.search(r'###\s*(?:Delivered Releases|Delivered / Completed|Delivered / Previous Release|Delivered|Previous / Available|Completed This Period).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if deliv_match:
         items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', deliv_match.group(1)) if x.strip()]
         if items:
-            scope_journey["delivered_releases"] = [{"name": "DELIVERED", "go_live": "", "items": items}]
+            scope_journey["delivered_releases"] = [{"name": "DELIVERED / PREVIOUS", "go_live": "", "items": items}]
 
     # Current Release Section
     curr_scope_match = re.search(r'###\s*(?:Current Release|Current Phase|Current Work|This Week).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
@@ -155,7 +157,7 @@ def parse_markdown(md_text):
                 scope_journey["current_release"]["core_modules"] = list_items
 
     # Future Releases
-    fut_match = re.search(r'###\s*(?:Future Releases|Post-Release / Next|Next Phase|Next Week|Upcoming / Pending).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    fut_match = re.search(r'###\s*(?:Future Releases|Future Release|Post-Release / Next|Next Phase|Next Week|Upcoming / Pending).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if fut_match:
         items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', fut_match.group(1)) if x.strip()]
         if items:
@@ -212,13 +214,13 @@ def parse_markdown(md_text):
     data['release_plan'] = rel_plan
 
     # Section 3: Effort Summary
-    orig_alloc = get_field(r'\*\*(?:Original Allocation):\*\*\s*(.*?)\n', "N/A")
-    cons_td = get_field(r'\*\*(?:Consumed To Date):\*\*\s*(.*?)\n', "N/A")
+    orig_alloc = get_field(r'\*\*(?:Original Allocation|Total Allocated Man-Days):\*\*\s*(.*?)\n', "N/A")
+    cons_td = get_field(r'\*\*(?:Consumed To Date|Approx\. Consumed|Effort Consumed \(Approx\.\)):\*\*\s*(.*?)\n', "N/A")
     fore_rem = get_field(r'\*\*(?:Forecast Remaining):\*\*\s*(.*?)\n', "N/A")
-    fore_tot = get_field(r'\*\*(?:Forecast Total):\*\*\s*(.*?)\n', "N/A")
+    fore_tot = get_field(r'\*\*(?:Forecast Total|Forecast Total \(Project\)):\*\*\s*(.*?)\n', "N/A")
     
     # Extract consumed percentage
-    consumed_pct_raw = get_field(r'\*\*(?:Consumed Percentage|Overall Progress \(Scope Complete\)|Overall Progress|Scope Completion):\*\*\s*(.*?)\n', "0%")
+    consumed_pct_raw = get_field(r'\*\*(?:Consumed Percentage|Consumed Percentage \(Weekly\)|Effort Consumed \(Weekly\)|Overall Progress \(Scope Complete\)|Overall Progress|Scope Completion):\*\*\s*(.*?)\n', "0%")
     try:
         pct_val = int(re.sub(r'\D', '', consumed_pct_raw))
     except ValueError:
@@ -229,7 +231,7 @@ def parse_markdown(md_text):
         "consumed_to_date": cons_td,
         "forecast_remaining": fore_rem,
         "forecast_total": fore_tot,
-        "overrun": get_field(r'\*\*(?:Forecast Overrun|Forecast Overrun / Underrun):\*\*\s*(.*?)\n', "0 DAYS"),
+        "overrun": get_field(r'\*\*(?:Forecast Overrun|Forecast Overrun / Underrun|Effort Overrun / Underrun):\*\*\s*(.*?)\n', "0 DAYS"),
         "budget_status": re.sub(r'<!--.*?-->', '', get_field(r'\*\*(?:Budget Status):\*\*\s*(.*?)\n', "WITHIN BUDGET")).strip().upper(),
         "consumed_percentage": pct_val,
         "consumed_text": get_field(r'\*\*(?:Consumed Subtext):\*\*\s*(.*?)\n', f"{cons_td} consumed")
@@ -238,8 +240,8 @@ def parse_markdown(md_text):
     # Section 4: What Changed This Week
     sched_change = get_field(r'\*\*(?:Schedule Change|Main Objective):\*\*\s*(.*?)\n', "")
     scope_change = get_field(r'\*\*(?:Scope Change|Patch Work|Completed Work):\*\*\s*(.*?)\n', "")
-    effort_change = get_field(r'\*\*(?:Effort Change|Enhancements):\*\*\s*(.*?)\n', "")
-    material_notes = get_field(r'\*\*(?:Material Notes|Note):\*\*\s*(.*?)\n', "")
+    effort_change = get_field(r'\*\*(?:Effort Change|Enhancements|Resource / Effort Change):\*\*\s*(.*?)\n', "")
+    material_notes = get_field(r'\*\*(?:Material Notes|Note|Other Material Changes):\*\*\s*(.*?)\n', "")
 
     # Subheading bullet fallbacks if key-values are empty
     sec4_match = re.search(r'##\s*4\.\s*WHAT CHANGED.*?\n(.*?)(?=##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
@@ -278,18 +280,39 @@ def parse_markdown(md_text):
     decisions = []
     dec_match = re.search(r'###\s*Decisions / Approvals Required.*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if dec_match:
-        for item in re.findall(r'[-*]\s*\*\*(.*?)\*\*\s*\|?\s*(.*?)\n', dec_match.group(1)):
-            decisions.append({"description": item[0], "due_date": item[1] if item[1] else "N/A"})
-        if not decisions:
-            items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', dec_match.group(1)) if x.strip()]
-            for it in items:
-                decisions.append({"description": it, "due_date": "N/A"})
+        dec_text = dec_match.group(1)
+        # Check if table format
+        if "|" in dec_text:
+            lines = [l.strip() for l in dec_text.strip().split('\n') if "|" in l]
+            for line in lines[2:]:  # skip header & divider
+                cols = [c.strip() for c in line.split('|')[1:-1]]
+                if len(cols) >= 1 and not cols[0].startswith(':-'):
+                    dec_desc = cols[0]
+                    due_d = cols[2] if len(cols) >= 3 else "TBD"
+                    decisions.append({"description": dec_desc, "due_date": due_d})
+        else:
+            for item in re.findall(r'[-*]\s*\*\*(.*?)\*\*\s*\|?\s*(.*?)\n', dec_text):
+                decisions.append({"description": item[0], "due_date": item[1] if item[1] else "N/A"})
+            if not decisions:
+                items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', dec_text) if x.strip()]
+                for it in items:
+                    decisions.append({"description": it, "due_date": "N/A"})
 
     escalation_val = get_field(r'\*\*(?:Escalation Status):\*\*\s*(.*?)\n', "")
     if not escalation_val:
         esc_match = re.search(r'###\s*Escalation Status.*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
         if esc_match:
-            escalation_val = esc_match.group(1).strip()
+            esc_text = esc_match.group(1).strip()
+            if "|" in esc_text:
+                esc_items = []
+                lines = [l.strip() for l in esc_text.split('\n') if "|" in l]
+                for line in lines[2:]:
+                    cols = [c.strip() for c in line.split('|')[1:-1]]
+                    if len(cols) >= 2 and not cols[0].startswith(':-'):
+                        esc_items.append(f"{cols[0]}: {cols[1]}")
+                escalation_val = "; ".join(esc_items)
+            else:
+                escalation_val = esc_text
 
     data['risks_and_attention'] = {
         "top_risks": top_risks,

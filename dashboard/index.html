@@ -761,7 +761,7 @@
 
       data.client = getField('\\*\\*(?:Client):\\*\\*\\s*(.*?)\\n', 'CLIENT');
 
-      const pName = getField('\\*\\*(?:Project Name):\\*\\*\\s*(.*?)\\n', 'PROJECT NAME');
+      const pName = getField('\\*\\*(?:Project Name|Project):\\*\\*\\s*(.*?)\\n', 'PROJECT NAME');
       data.project_name = pName;
 
       if(!pId) {
@@ -772,17 +772,20 @@
       data.current_release = getField('\\*\\*(?:Current Release \/ Phase|Current Release):\\*\\*\\s*(.*?)\\n', 'RELEASE 1');
       let rawWeek = getField('\\*\\*(?:Week No):\\*\\*\\s*(.*?)\\n', '1');
       let weekNum = rawWeek.replace(/week\s*/i, '').trim();
-      data.week_no = weekNum || '1';
-      data.week_ending_date = getField('\\*\\*(?:Week Ending Date):\\*\\*\\s*(.*?)\\n', 'N/A');
+      if(!weekNum || weekNum.toLowerCase().includes('not provided') || weekNum.toLowerCase().includes('n/a') || weekNum.toLowerCase().includes('tbd')) {
+        weekNum = '1';
+      }
+      data.week_no = weekNum;
+      data.week_ending_date = getField('\\*\\*(?:Week Ending Date|Report Date):\\*\\*\\s*(.*?)\\n', 'N/A');
 
-      let rawStatus = getField('\\*\\*(?:Overall Status|Overall RAG Status|Project Status):\\*\\*\\s*(.*?)\\n', 'GREEN');
+      let rawStatus = getField('\\*\\*(?:Overall Status|Overall RAG Status|Project Status|RAG Status):\\*\\*\\s*(.*?)\\n', 'GREEN');
       rawStatus = rawStatus.replace(/<!--.*?-->/g, '').trim().toUpperCase();
       if(rawStatus.includes('GREEN')) data.overall_status = 'GREEN';
       else if(rawStatus.includes('RED')) data.overall_status = 'RED';
       else data.overall_status = 'AMBER';
 
       data.total_allocation_man_days = getField('\\*\\*(?:Total Allocated Man-Days):\\*\\*\\s*(.*?)\\n', 'TBD');
-      data.release_start_date = getField('\\*\\*(?:Release Start Date|Original Start Date):\\*\\*\\s*(.*?)\\n', 'N/A');
+      data.release_start_date = getField('\\*\\*(?:Release Start Date|Original Start Date|Start Date):\\*\\*\\s*(.*?)\\n', 'N/A');
 
       // Resources
       const resources = [];
