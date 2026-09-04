@@ -630,7 +630,13 @@
       projSelect.innerHTML = '';
       
       const keys = Object.keys(projectsStore);
-      if(keys.length === 0) return;
+      if(keys.length === 0) {
+        const opt = document.createElement('option');
+        opt.value = "";
+        opt.textContent = "No Projects Loaded (Click Upload Dev MD)";
+        projSelect.appendChild(opt);
+        return;
+      }
 
       keys.forEach(pId => {
         const p = projectsStore[pId];
