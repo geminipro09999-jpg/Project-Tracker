@@ -1,0 +1,580 @@
+{
+  "PROJ-001": {
+    "project_id": "PROJ-001",
+    "project_name": "Customer Support Chatbot",
+    "company": "GOVTECH SOLUTIONS",
+    "client": "CLIENT NAME",
+    "weeks": {
+      "1": {
+        "company": "GOVTECH SOLUTIONS",
+        "project_id": "PROJ-001",
+        "client": "CLIENT NAME",
+        "project_name": "Customer Support Chatbot",
+        "current_release": "RELEASE 1",
+        "week_no": "1",
+        "week_ending_date": "N/A",
+        "overall_status": "GREEN",
+        "total_allocation_man_days": 100,
+        "release_start_date": "N/A",
+        "resources": [],
+        "scope_journey": {
+          "delivered_releases": [],
+          "current_release": {
+            "name": "RELEASE 1",
+            "core_modules": [],
+            "integrations": [],
+            "specific_objectives": []
+          },
+          "future_releases": []
+        },
+        "release_plan": {
+          "original_plan_start": "N/A",
+          "original_plan_end": "N/A",
+          "current_forecast_start": "N/A",
+          "current_forecast_end": "N/A",
+          "delay_days": "0 DAYS",
+          "schedule_status": "ON TRACK",
+          "milestones": []
+        },
+        "effort_summary": {
+          "original_allocation": "100 MAN-DAYS",
+          "consumed_to_date": "0 MAN-DAYS",
+          "forecast_remaining": "0 MAN-DAYS",
+          "forecast_total": "100 MAN-DAYS",
+          "overrun": "0 MAN-DAYS",
+          "budget_status": "WITHIN BUDGET",
+          "consumed_percentage": 50,
+          "consumed_text": "0 MAN-DAYS consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No change",
+          "scope_change": "No change",
+          "scope_change_tag": "Approved",
+          "effort_change": "No change",
+          "note": "No material changes this week."
+        },
+        "risks_and_attention": {
+          "top_risks": [],
+          "decisions_required": [],
+          "escalation": "No escalations."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 50,
+          "time_elapsed_percent": 50,
+          "effort_consumed_percent": 50,
+          "insight_note": "Development on track."
+        }
+      }
+    }
+  },
+  "OGOV-GTS-002": {
+    "project_id": "OGOV-GTS-002",
+    "project_name": "NBC DIGITAL PLATFORM",
+    "company": "GOVTECH SOLUTIONS",
+    "client": "NATIONAL BROADCASTING CORP.",
+    "weeks": {
+      "36": {
+        "company": "GOVTECH SOLUTIONS",
+        "project_id": "OGOV-GTS-002",
+        "client": "NATIONAL BROADCASTING CORP.",
+        "project_name": "NBC DIGITAL PLATFORM",
+        "current_release": "RELEASE 2",
+        "week_no": "36",
+        "week_ending_date": "4 SEPTEMBER 2026",
+        "overall_status": "AMBER",
+        "total_allocation_man_days": 150,
+        "release_start_date": "01 JUL 2026",
+        "resources": [
+          {
+            "name": "Sarah Ahmed",
+            "role": "Project Manager",
+            "allocation_days": 20,
+            "responsibility": "Planning, coordination, risks, reporting, client liaison"
+          },
+          {
+            "name": "Nimal Perera",
+            "role": "Solution Developer",
+            "allocation_days": 30,
+            "responsibility": "Solution configuration & development"
+          },
+          {
+            "name": "Tharsha Fernando",
+            "role": "QA Engineer",
+            "allocation_days": 35,
+            "responsibility": "Testing, quality assurance, defect management"
+          },
+          {
+            "name": "John Wijesinghe",
+            "role": "Technical Lead / Developer",
+            "allocation_days": 65,
+            "responsibility": "Technical design, development, integration, mentoring"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "RELEASE 1",
+              "go_live": "15 May 2026",
+              "items": [
+                "Core Booking",
+                "Customer Management",
+                "Payments",
+                "Basic Reporting"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "RELEASE 2",
+            "core_modules": [
+              "Membership Management",
+              "Advanced Reporting"
+            ],
+            "integrations": [
+              "Payment Gateway (Stripe)",
+              "CRM Integration (Salesforce)"
+            ],
+            "specific_objectives": [
+              "Data Migration Tool",
+              "Mobile Responsive Portal"
+            ]
+          },
+          "future_releases": [
+            {
+              "name": "RELEASE 3",
+              "planned_start": "Nov 2026 (Tentative)",
+              "items": [
+                "Mobile Application (iOS/Android)",
+                "Advanced Analytics",
+                "Content Management System",
+                "AI Recommendations"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "01 JUL 2026",
+          "original_plan_end": "30 SEP 2026",
+          "current_forecast_start": "01 JUL 2026",
+          "current_forecast_end": "21 OCT 2026",
+          "delay_days": "+21 DAYS",
+          "schedule_status": "OFF TRACK",
+          "milestones": [
+            {
+              "milestone": "Requirements Complete",
+              "original_plan": "15 Jul 2026",
+              "current_forecast": "15 Jul 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Development Complete",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "14 Sep 2026",
+              "variance": "+14 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "System Test Complete",
+              "original_plan": "15 Sep 2026",
+              "current_forecast": "30 Sep 2026",
+              "variance": "+15 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "UAT Complete",
+              "original_plan": "22 Sep 2026",
+              "current_forecast": "12 Oct 2026",
+              "variance": "+20 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "Go-Live",
+              "original_plan": "30 Sep 2026",
+              "current_forecast": "21 Oct 2026",
+              "variance": "+21 days",
+              "status": "RED"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "150 MAN-DAYS",
+          "consumed_to_date": "110 MAN-DAYS",
+          "forecast_remaining": "70 MAN-DAYS",
+          "forecast_total": "180 MAN-DAYS",
+          "overrun": "+30 MAN-DAYS / +20%",
+          "budget_status": "OVER BUDGET",
+          "consumed_percentage": 73,
+          "consumed_text": "110 of 150 man-days consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "Go-Live forecast moved from 30 Sep -> 21 Oct 2026 (+21 days)",
+          "scope_change": "CRM Integration (Salesforce) added to Release 2 through approved Change Request",
+          "scope_change_tag": "CR-015 (Approved)",
+          "effort_change": "Forecast effort increased from 150 -> 180 man-days (+30 days / +20%)",
+          "note": "No other material changes this week."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Client API availability delayed.",
+              "severity": "HIGH"
+            },
+            {
+              "description": "Data migration source quality issues.",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "UAT environment performance instability.",
+              "severity": "MEDIUM"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Approve Change Request CR-016 (Additional Reporting)",
+              "due_date": "Due: 6 Sep 2026"
+            }
+          ],
+          "escalation": "No escalations beyond normal reporting."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 58,
+          "time_elapsed_percent": 72,
+          "effort_consumed_percent": 73,
+          "insight_note": "Time consumed (72%) is higher than scope complete (58%). Monitor closely."
+        }
+      }
+    }
+  },
+  "ECOM-RTL-101": {
+    "project_id": "ECOM-RTL-101",
+    "project_name": "E-COMMERCE MOBILE & WEB PLATFORM",
+    "company": "RETAIL TECH LABS",
+    "client": "GLOBAL SUPERMART",
+    "weeks": {
+      "36": {
+        "company": "RETAIL TECH LABS",
+        "project_id": "ECOM-RTL-101",
+        "client": "GLOBAL SUPERMART",
+        "project_name": "E-COMMERCE MOBILE & WEB PLATFORM",
+        "current_release": "RELEASE 1",
+        "week_no": "36",
+        "week_ending_date": "4 SEPTEMBER 2026",
+        "overall_status": "GREEN",
+        "total_allocation_man_days": 120,
+        "release_start_date": "01 AUG 2026",
+        "resources": [
+          {
+            "name": "Priya Sharma",
+            "role": "Project Lead",
+            "allocation_days": 15,
+            "responsibility": "Team management & delivery tracking"
+          },
+          {
+            "name": "Kumar Raj",
+            "role": "Senior Backend Developer",
+            "allocation_days": 45,
+            "responsibility": "Microservices API development"
+          },
+          {
+            "name": "Anita Roy",
+            "role": "React Native Lead",
+            "allocation_days": 35,
+            "responsibility": "iOS and Android App development"
+          },
+          {
+            "name": "Dave Miller",
+            "role": "DevOps Engineer",
+            "allocation_days": 25,
+            "responsibility": "CI/CD pipelines & AWS Deployment"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED",
+              "go_live": "",
+              "items": [
+                "**MVP (Go-Live: 15 Jun 2026):** User Authentication, Product Catalog"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "RELEASE 1",
+            "core_modules": [
+              "Shopping Cart",
+              "Checkout Gateway",
+              "Order Tracking"
+            ],
+            "integrations": [
+              "Razorpay Integration",
+              "Automated Logistics API"
+            ],
+            "specific_objectives": [
+              "Single-click Checkout",
+              "Push Notifications"
+            ]
+          },
+          "future_releases": [
+            {
+              "name": "FUTURE",
+              "planned_start": "Tentative",
+              "items": [
+                "**RELEASE 2 (Planned Start: Oct 2026):** Loyalty Program, Recommendations Engine",
+                "--"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "01 AUG 2026",
+          "original_plan_end": "30 OCT 2026",
+          "current_forecast_start": "01 AUG 2026",
+          "current_forecast_end": "30 OCT 2026",
+          "delay_days": "0 DAYS",
+          "schedule_status": "ON TRACK",
+          "milestones": [
+            {
+              "milestone": "Architecture Freeze",
+              "original_plan": "15 Aug 2026",
+              "current_forecast": "15 Aug 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "API Development Complete",
+              "original_plan": "15 Sep 2026",
+              "current_forecast": "15 Sep 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Mobile App Beta Build",
+              "original_plan": "30 Sep 2026",
+              "current_forecast": "30 Sep 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Security Audit & UAT",
+              "original_plan": "15 Oct 2026",
+              "current_forecast": "15 Oct 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Go-Live",
+              "original_plan": "30 Oct 2026",
+              "current_forecast": "30 Oct 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "120 MAN-DAYS",
+          "consumed_to_date": "50 MAN-DAYS",
+          "forecast_remaining": "70 MAN-DAYS",
+          "forecast_total": "120 MAN-DAYS",
+          "overrun": "0 MAN-DAYS / 0%",
+          "budget_status": "WITHIN BUDGET",
+          "consumed_percentage": 42,
+          "consumed_text": "50 of 120 man-days consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "On schedule without delay",
+          "scope_change": "Added Apple Pay checkout support",
+          "scope_change_tag": "CR-004 (Approved)",
+          "effort_change": "No effort overrun",
+          "note": "Payment gateway sandbox integration complete."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Third-party logistics API response time slow in staging.",
+              "severity": "MEDIUM"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Approve Payment Gateway Merchant Account Access",
+              "due_date": "Due: 8 Sep 2026"
+            }
+          ],
+          "escalation": "No escalations."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 45,
+          "time_elapsed_percent": 40,
+          "effort_consumed_percent": 42,
+          "insight_note": "Development on track. Milestones progressing according to plan."
+        }
+      }
+    }
+  },
+  "FIN-BNK-303": {
+    "project_id": "FIN-BNK-303",
+    "project_name": "NEXT-GEN CORE BANKING PORTAL",
+    "company": "FINTECH SYSTEMS CORP",
+    "client": "APEX COMMERCIAL BANK",
+    "weeks": {
+      "36": {
+        "company": "FINTECH SYSTEMS CORP",
+        "project_id": "FIN-BNK-303",
+        "client": "APEX COMMERCIAL BANK",
+        "project_name": "NEXT-GEN CORE BANKING PORTAL",
+        "current_release": "RELEASE 3",
+        "week_no": "36",
+        "week_ending_date": "4 SEPTEMBER 2026",
+        "overall_status": "RED",
+        "total_allocation_man_days": 200,
+        "release_start_date": "01 MAY 2026",
+        "resources": [
+          {
+            "name": "Vikram Malhotra",
+            "role": "Project Director",
+            "allocation_days": 30,
+            "responsibility": "Executive stakeholder management"
+          },
+          {
+            "name": "Alex Chen",
+            "role": "Lead Security Architect",
+            "allocation_days": 60,
+            "responsibility": "Core banking encryption & compliance"
+          },
+          {
+            "name": "Sunita Rao",
+            "role": "Senior Tester",
+            "allocation_days": 50,
+            "responsibility": "Automated stress & penetration testing"
+          },
+          {
+            "name": "David Smith",
+            "role": "Fullstack Lead",
+            "allocation_days": 55,
+            "responsibility": "Account dashboard & real-time ledger"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED",
+              "go_live": "",
+              "items": [
+                "**RELEASE 1 & 2:** Account Ledger, Kyc Verification, Wire Transfers"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "RELEASE 3",
+            "core_modules": [
+              "International Swift Transfers",
+              "Fraud Detection AI"
+            ],
+            "integrations": [
+              "Central Bank Regulatory API",
+              "ISO 20022 Gateway"
+            ],
+            "specific_objectives": [
+              "Multi-Factor Auth",
+              "Audit Trail Engine"
+            ]
+          },
+          "future_releases": [
+            {
+              "name": "FUTURE",
+              "planned_start": "Tentative",
+              "items": [
+                "**RELEASE 4:** Crypto Ledger Pilot, Corporate Treasury Module",
+                "--"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "01 MAY 2026",
+          "original_plan_end": "15 SEP 2026",
+          "current_forecast_start": "01 MAY 2026",
+          "current_forecast_end": "15 NOV 2026",
+          "delay_days": "+60 DAYS",
+          "schedule_status": "OFF TRACK",
+          "milestones": [
+            {
+              "milestone": "Swift Core Integration",
+              "original_plan": "30 Jun 2026",
+              "current_forecast": "30 Jul 2026",
+              "variance": "+30 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "Security Penetration Test",
+              "original_plan": "15 Aug 2026",
+              "current_forecast": "30 Sep 2026",
+              "variance": "+45 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "Regulatory Compliance Audit",
+              "original_plan": "01 Sep 2026",
+              "current_forecast": "30 Oct 2026",
+              "variance": "+59 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "Production Cutover",
+              "original_plan": "15 Sep 2026",
+              "current_forecast": "15 Nov 2026",
+              "variance": "+60 days",
+              "status": "RED"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "200 MAN-DAYS",
+          "consumed_to_date": "180 MAN-DAYS",
+          "forecast_remaining": "80 MAN-DAYS",
+          "forecast_total": "260 MAN-DAYS",
+          "overrun": "+60 MAN-DAYS / +30%",
+          "budget_status": "OVER BUDGET",
+          "consumed_percentage": 90,
+          "consumed_text": "180 of 200 man-days consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "Cutover delayed to 15 Nov due to audit requirements",
+          "scope_change": "Mandatory ISO 20022 compliance rule update added",
+          "scope_change_tag": "CR-088 (Mandatory)",
+          "effort_change": "Resource budget expanded by +60 man-days",
+          "note": "Penetration test revealed 2 high severity vulnerabilities needing immediate remediation."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Swift Sandbox connection dropping intermittently.",
+              "severity": "HIGH"
+            },
+            {
+              "description": "Penetration test security remediation pending.",
+              "severity": "HIGH"
+            },
+            {
+              "description": "Central Bank compliance approval pending.",
+              "severity": "HIGH"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Approve Emergency Contract Extension for Security Lead",
+              "due_date": "Due: 5 Sep 2026"
+            }
+          ],
+          "escalation": "No escalations."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 60,
+          "time_elapsed_percent": 92,
+          "effort_consumed_percent": 90,
+          "insight_note": "Project is severely off-track due to security compliance delay. Immediate executive intervention required."
+        }
+      }
+    }
+  }
+}

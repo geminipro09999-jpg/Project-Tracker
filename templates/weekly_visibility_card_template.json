@@ -1,0 +1,75 @@
+{
+  "company": "COMPANY NAME",
+  "project_id": "PROJECT-ID-001",
+  "client": "CLIENT NAME",
+  "project_name": "PROJECT NAME",
+  "current_release": "RELEASE 1",
+  "week_no": "1",
+  "week_ending_date": "DATE",
+  "overall_status": "GREEN",
+  "total_allocation_man_days": 100,
+  "release_start_date": "DATE",
+  "resources": [
+    {
+      "name": "Resource Name",
+      "role": "Role Title",
+      "allocation_days": 10,
+      "responsibility": "Responsibilities description"
+    }
+  ],
+  "scope_journey": {
+    "delivered_releases": [],
+    "current_release": {
+      "name": "RELEASE 1",
+      "core_modules": [],
+      "integrations": [],
+      "specific_objectives": []
+    },
+    "future_releases": []
+  },
+  "release_plan": {
+    "original_plan_start": "DATE",
+    "original_plan_end": "DATE",
+    "current_forecast_start": "DATE",
+    "current_forecast_end": "DATE",
+    "delay_days": "0 DAYS",
+    "schedule_status": "ON TRACK",
+    "milestones": [
+      {
+        "milestone": "Milestone Name",
+        "original_plan": "DATE",
+        "current_forecast": "DATE",
+        "variance": "0 days",
+        "status": "GREEN"
+      }
+    ]
+  },
+  "effort_summary": {
+    "original_allocation": "100 MAN-DAYS",
+    "consumed_to_date": "0 MAN-DAYS",
+    "forecast_remaining": "100 MAN-DAYS",
+    "forecast_total": "100 MAN-DAYS",
+    "overrun": "0 MAN-DAYS / 0%",
+    "budget_status": "WITHIN BUDGET",
+    "consumed_percentage": 0,
+    "consumed_text": "0 of 100 man-days consumed"
+  },
+  "what_changed_this_week": {
+    "schedule_change": "No change",
+    "scope_change": "No change",
+    "scope_change_tag": "",
+    "effort_change": "No change",
+    "note": "No material changes this week."
+  },
+  "risks_and_attention": {
+    "top_risks": [],
+    "decisions_required": [],
+    "escalation": "No escalations."
+  },
+  "at_a_glance": {
+    "overall_progress_percent": 0,
+    "time_elapsed_percent": 0,
+    "effort_consumed_percent": 0,
+    "insight_note": "Project on track."
+  }
+}
