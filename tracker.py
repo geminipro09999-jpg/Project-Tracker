@@ -16,31 +16,48 @@ if sys.platform == "win32":
 
 def parse_markdown(md_text):
     """
-    Parses a Weekly Project Visibility Card markdown document into structured JSON.
+    Parses any Weekly Project Visibility Card markdown document into structured JSON.
+    Handles N/A, TBD, custom milestone tables, and various field name formats.
     """
     data = {}
 
-    # Metadata extraction
     def get_field(pattern, default="N/A"):
         m = re.search(pattern, md_text, re.IGNORECASE)
         return m.group(1).strip() if m else default
 
-    data['company'] = get_field(r'\*\*(?:Company):\*\*\s*(.*?)\n', "GOVTECH SOLUTIONS")
-    data['project_id'] = get_field(r'\*\*(?:Project ID):\*\*\s*(.*?)\n', "PROJ-001")
-    data['client'] = get_field(r'\*\*(?:Client):\*\*\s*(.*?)\n', "CLIENT NAME")
-    data['project_name'] = get_field(r'\*\*(?:Project Name):\*\*\s*(.*?)\n', "PROJECT NAME")
-    data['current_release'] = get_field(r'\*\*(?:Current Release):\*\*\s*(.*?)\n', "RELEASE 1")
+    # Metadata extraction
+    data['company'] = get_field(r'\*\*(?:Company):\*\*\s*(.*?)\n', "TIC INCUBATOR")
+    
+    proj_id = get_field(r'\*\*(?:Project ID):\*\*\s*(.*?)\n', "N/A")
+    data['project_id'] = proj_id if proj_id not in ["N/A / Not Provided", "N/A", ""] else ""
+
+    data['client'] = get_field(r'\*\*(?:Client):\*\*\s*(.*?)\n', "CLIENT")
+    
+    proj_name = get_field(r'\*\*(?:Project Name):\*\*\s*(.*?)\n', "PROJECT NAME")
+    data['project_name'] = proj_name
+
+    # If project_id is empty, create a clean slug from project_name
+    if not data['project_id']:
+        slug = re.sub(r'[^a-zA-Z0-9]', '_', proj_name).upper()
+        data['project_id'] = slug[:16]
+
+    data['current_release'] = get_field(r'\*\*(?:Current Release / Phase|Current Release):\*\*\s*(.*?)\n', "RELEASE 1")
     data['week_no'] = get_field(r'\*\*(?:Week No):\*\*\s*(.*?)\n', "1")
     data['week_ending_date'] = get_field(r'\*\*(?:Week Ending Date):\*\*\s*(.*?)\n', "N/A")
     
     # Overall Status (strip HTML comments if any)
-    raw_status = get_field(r'\*\*(?:Overall Status):\*\*\s*(.*?)\n', "GREEN")
+    raw_status = get_field(r'\*\*(?:Overall Status|Overall RAG Status|Project Status):\*\*\s*(.*?)\n', "GREEN")
     raw_status = re.sub(r'<!--.*?-->', '', raw_status).strip().upper()
-    data['overall_status'] = raw_status if raw_status in ['GREEN', 'AMBER', 'RED'] else "AMBER"
+    if "GREEN" in raw_status:
+        data['overall_status'] = "GREEN"
+    elif "RED" in raw_status:
+        data['overall_status'] = "RED"
+    else:
+        data['overall_status'] = "AMBER"
 
     # Resource Allocation
-    data['total_allocation_man_days'] = int(get_field(r'\*\*(?:Total Allocated Man-Days):\*\*\s*(\d+)', "100"))
-    data['release_start_date'] = get_field(r'\*\*(?:Release Start Date):\*\*\s*(.*?)\n', "N/A")
+    data['total_allocation_man_days'] = get_field(r'\*\*(?:Total Allocated Man-Days):\*\*\s*(.*?)\n', "TBD")
+    data['release_start_date'] = get_field(r'\*\*(?:Release Start Date|Original Start Date):\*\*\s*(.*?)\n', "N/A")
 
     # Resource Table
     resources = []
@@ -50,14 +67,10 @@ def parse_markdown(md_text):
         for line in lines:
             cols = [c.strip() for c in line.split('|')[1:-1]]
             if len(cols) >= 4:
-                try:
-                    alloc_val = int(re.sub(r'\D', '', cols[2]))
-                except ValueError:
-                    alloc_val = 0
                 resources.append({
                     "name": cols[0],
                     "role": cols[1],
-                    "allocation_days": alloc_val,
+                    "allocation_days": cols[2],
                     "responsibility": cols[3]
                 })
     data['resources'] = resources
@@ -74,41 +87,52 @@ def parse_markdown(md_text):
         "future_releases": []
     }
 
-    deliv_match = re.search(r'###\s*Delivered Releases.*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    deliv_match = re.search(r'###\s*(?:Delivered Releases|Delivered / Completed|Previous / Available).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if deliv_match:
-        items = re.findall(r'[-*]\s*(.*?)\n', deliv_match.group(1))
-        scope_journey["delivered_releases"] = [{"name": "DELIVERED", "go_live": "", "items": items}]
+        items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', deliv_match.group(1)) if x.strip()]
+        if items:
+            scope_journey["delivered_releases"] = [{"name": "DELIVERED", "go_live": "", "items": items}]
 
-    curr_scope_match = re.search(r'###\s*Current Release.*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    curr_scope_match = re.search(r'###\s*(?:Current Release|Current Phase|This Week).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if curr_scope_match:
         text = curr_scope_match.group(1)
-        core_m = re.search(r'\*\*Core Modules:\*\*\s*(.*?)\n', text)
+        
+        core_m = re.search(r'\*\*(?:Core Modules|Completed This Period|Current Work):\*\*\s*(.*?)\n', text)
         if core_m:
             scope_journey["current_release"]["core_modules"] = [x.strip() for x in core_m.group(1).split(',')]
         
-        integ_m = re.search(r'\*\*Integrations:\*\*\s*(.*?)\n', text)
+        integ_m = re.search(r'\*\*(?:Integrations|Integration Status):\*\*\s*(.*?)\n', text)
         if integ_m:
             scope_journey["current_release"]["integrations"] = [x.strip() for x in integ_m.group(1).split(',')]
             
-        obj_m = re.search(r'\*\*Specific Objectives:\*\*\s*(.*?)\n', text)
+        obj_m = re.search(r'\*\*(?:Specific Objectives|Upcoming / Pending):\*\*\s*(.*?)\n', text)
         if obj_m:
             scope_journey["current_release"]["specific_objectives"] = [x.strip() for x in obj_m.group(1).split(',')]
 
-    fut_match = re.search(r'###\s*Future Releases.*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+        # Fallback list items if no key-value match
+        if not scope_journey["current_release"]["core_modules"]:
+            list_items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', text) if x.strip()]
+            if list_items:
+                scope_journey["current_release"]["core_modules"] = list_items[:3]
+                scope_journey["current_release"]["integrations"] = list_items[3:6]
+                scope_journey["current_release"]["specific_objectives"] = list_items[6:]
+
+    fut_match = re.search(r'###\s*(?:Future Releases|Post-Release / Next|Next Phase|Next Week).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if fut_match:
-        items = re.findall(r'[-*]\s*(.*?)\n', fut_match.group(1))
-        scope_journey["future_releases"] = [{"name": "FUTURE", "planned_start": "Tentative", "items": items}]
+        items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', fut_match.group(1)) if x.strip()]
+        if items:
+            scope_journey["future_releases"] = [{"name": "FUTURE", "planned_start": "Planned", "items": items}]
 
     data['scope_journey'] = scope_journey
 
     # Section 2: Release Plan
     rel_plan = {
-        "original_plan_start": get_field(r'\*\*(?:Original Plan Start):\*\*\s*(.*?)\n', "N/A"),
-        "original_plan_end": get_field(r'\*\*(?:Original Plan End):\*\*\s*(.*?)\n', "N/A"),
+        "original_plan_start": get_field(r'\*\*(?:Original Plan Start|Original Start Date):\*\*\s*(.*?)\n', "N/A"),
+        "original_plan_end": get_field(r'\*\*(?:Original Plan End|Original End Date):\*\*\s*(.*?)\n', "N/A"),
         "current_forecast_start": get_field(r'\*\*(?:Current Forecast Start):\*\*\s*(.*?)\n', "N/A"),
         "current_forecast_end": get_field(r'\*\*(?:Current Forecast End):\*\*\s*(.*?)\n', "N/A"),
         "delay_days": get_field(r'\*\*(?:Schedule Delay):\*\*\s*(.*?)\n', "0 DAYS"),
-        "schedule_status": re.sub(r'<!--.*?-->', '', get_field(r'\*\*(?:Schedule Status):\*\*\s*(.*?)\n', "ON TRACK")).strip().upper(),
+        "schedule_status": re.sub(r'<!--.*?-->', '', get_field(r'\*\*(?:Schedule Status|Current Release Status):\*\*\s*(.*?)\n', "ON TRACK")).strip().upper(),
         "milestones": []
     }
 
@@ -125,31 +149,49 @@ def parse_markdown(md_text):
                     "variance": cols[3],
                     "status": cols[4].upper()
                 })
+            elif len(cols) >= 2:
+                # 2-column table format (Milestone | Status)
+                m_status = cols[1].upper()
+                status_color = "GREEN" if "COMPLETE" in m_status else ("AMBER" if "PROGRESS" in m_status else "RED")
+                rel_plan["milestones"].append({
+                    "milestone": cols[0],
+                    "original_plan": "N/A",
+                    "current_forecast": cols[1],
+                    "variance": "0 days",
+                    "status": status_color
+                })
     data['release_plan'] = rel_plan
 
     # Section 3: Effort Summary
-    orig_alloc = get_field(r'\*\*(?:Original Allocation):\*\*\s*(.*?)\n', "100 MAN-DAYS")
-    cons_td = get_field(r'\*\*(?:Consumed To Date):\*\*\s*(.*?)\n', "0 MAN-DAYS")
-    fore_rem = get_field(r'\*\*(?:Forecast Remaining):\*\*\s*(.*?)\n', "0 MAN-DAYS")
-    fore_tot = get_field(r'\*\*(?:Forecast Total):\*\*\s*(.*?)\n', "100 MAN-DAYS")
+    orig_alloc = get_field(r'\*\*(?:Original Allocation):\*\*\s*(.*?)\n', "N/A")
+    cons_td = get_field(r'\*\*(?:Consumed To Date):\*\*\s*(.*?)\n', "N/A")
+    fore_rem = get_field(r'\*\*(?:Forecast Remaining):\*\*\s*(.*?)\n', "N/A")
+    fore_tot = get_field(r'\*\*(?:Forecast Total):\*\*\s*(.*?)\n', "N/A")
     
+    # Extract consumed percentage
+    consumed_pct_raw = get_field(r'\*\*(?:Consumed Percentage|Overall Progress \(Scope Complete\)|Overall Progress|Scope Completion):\*\*\s*(.*?)\n', "0%")
+    try:
+        pct_val = int(re.sub(r'\D', '', consumed_pct_raw))
+    except ValueError:
+        pct_val = 0
+
     data['effort_summary'] = {
         "original_allocation": orig_alloc,
         "consumed_to_date": cons_td,
         "forecast_remaining": fore_rem,
         "forecast_total": fore_tot,
-        "overrun": get_field(r'\*\*(?:Forecast Overrun):\*\*\s*(.*?)\n', "0 MAN-DAYS"),
+        "overrun": get_field(r'\*\*(?:Forecast Overrun|Forecast Overrun / Underrun):\*\*\s*(.*?)\n', "0 DAYS"),
         "budget_status": re.sub(r'<!--.*?-->', '', get_field(r'\*\*(?:Budget Status):\*\*\s*(.*?)\n', "WITHIN BUDGET")).strip().upper(),
-        "consumed_percentage": int(re.sub(r'\D', '', get_field(r'\*\*(?:Consumed Percentage):\*\*\s*(\d+)%', "50")) or 50),
+        "consumed_percentage": pct_val,
         "consumed_text": get_field(r'\*\*(?:Consumed Subtext):\*\*\s*(.*?)\n', f"{cons_td} consumed")
     }
 
     # Section 4: What Changed This Week
     data['what_changed_this_week'] = {
-        "schedule_change": get_field(r'\*\*(?:Schedule Change):\*\*\s*(.*?)\n', "No change"),
-        "scope_change": get_field(r'\*\*(?:Scope Change):\*\*\s*(.*?)\n', "No change"),
+        "schedule_change": get_field(r'\*\*(?:Schedule Change|Main Objective):\*\*\s*(.*?)\n', "No schedule change reported."),
+        "scope_change": get_field(r'\*\*(?:Scope Change|Patch Work|Completed Work):\*\*\s*(.*?)\n', "No scope change reported."),
         "scope_change_tag": get_field(r'\*\*(?:Scope Change Tag):\*\*\s*(.*?)\n', "Approved"),
-        "effort_change": get_field(r'\*\*(?:Effort Change):\*\*\s*(.*?)\n', "No change"),
+        "effort_change": get_field(r'\*\*(?:Effort Change|Enhancements):\*\*\s*(.*?)\n', "No effort change reported."),
         "note": get_field(r'\*\*(?:Material Notes):\*\*\s*(.*?)\n', "No material changes this week.")
     }
 
@@ -165,21 +207,37 @@ def parse_markdown(md_text):
     decisions = []
     dec_match = re.search(r'###\s*Decisions / Approvals Required.*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if dec_match:
-        for item in re.findall(r'[-*]\s*\*\*(.*?)\*\*\s*\|\s*(.*?)\n', dec_match.group(1)):
-            decisions.append({"description": item[0], "due_date": item[1]})
+        for item in re.findall(r'[-*]\s*\*\*(.*?)\*\*\s*\|?\s*(.*?)\n', dec_match.group(1)):
+            decisions.append({"description": item[0], "due_date": item[1] if item[1] else "N/A"})
+        if not decisions:
+            items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', dec_match.group(1)) if x.strip()]
+            for it in items:
+                decisions.append({"description": it, "due_date": "N/A"})
 
     data['risks_and_attention'] = {
         "top_risks": top_risks,
         "decisions_required": decisions,
-        "escalation": get_field(r'\*\*(?:Escalation Status):\*\*\s*(.*?)\n', "No escalations.")
+        "escalation": get_field(r'\*\*(?:Escalation Status):\*\*\s*(.*?)\n', "No escalations reported.")
     }
 
     # Section 6: At A Glance
+    time_elapsed_raw = get_field(r'\*\*(?:Time Elapsed):\*\*\s*(.*?)\n', "0%")
+    try:
+        time_pct = int(re.sub(r'\D', '', time_elapsed_raw))
+    except ValueError:
+        time_pct = 0
+
+    effort_cons_raw = get_field(r'\*\*(?:Effort Consumed):\*\*\s*(.*?)\n', "0%")
+    try:
+        effort_pct = int(re.sub(r'\D', '', effort_cons_raw))
+    except ValueError:
+        effort_pct = pct_val
+
     data['at_a_glance'] = {
-        "overall_progress_percent": int(re.sub(r'\D', '', get_field(r'\*\*(?:Overall Progress \(Scope Complete\)):\*\*\s*(\d+)%', "50")) or 50),
-        "time_elapsed_percent": int(re.sub(r'\D', '', get_field(r'\*\*(?:Time Elapsed):\*\*\s*(\d+)%', "50")) or 50),
-        "effort_consumed_percent": int(re.sub(r'\D', '', get_field(r'\*\*(?:Effort Consumed):\*\*\s*(\d+)%', "50")) or 50),
-        "insight_note": get_field(r'\*\*(?:Key Insight Note):\*\*\s*(.*?)\n', "Development on track.")
+        "overall_progress_percent": pct_val,
+        "time_elapsed_percent": time_pct,
+        "effort_consumed_percent": effort_pct,
+        "insight_note": get_field(r'\*\*(?:Key Insight Note):\*\*\s*(.*?)\n', "Project update received.")
     }
 
     return data
@@ -217,7 +275,7 @@ def update_projects_store(card_data, store_filepath="dashboard/projects_data.jso
     with open(store_filepath, 'w', encoding='utf-8') as f:
         json.dump(store, f, indent=2, ensure_ascii=False)
 
-    print(f"💾 Updated central multi-project store: [{card_data.get('project_name')}] - Week {week_no}")
+    print(f"💾 Updated central multi-project store: [{card_data.get('project_name')}] ({proj_id}) - Week {week_no}")
     return store
 
 

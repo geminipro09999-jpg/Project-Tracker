@@ -1,1 +1,813 @@
-{}
+{
+  "QRP-26-16": {
+    "project_id": "QRP-26-16",
+    "project_name": "QUEENSLAND RAIL BIKE STORAGE",
+    "company": "UNICOM TIC INCUBATOR",
+    "client": "QUEENSLAND RAIL",
+    "weeks": {
+      "36": {
+        "company": "UNICOM TIC INCUBATOR",
+        "project_id": "QRP-26-16",
+        "client": "QUEENSLAND RAIL",
+        "project_name": "QUEENSLAND RAIL BIKE STORAGE",
+        "current_release": "SECOND BRAIN SETUP",
+        "week_no": "36",
+        "week_ending_date": "4 SEPTEMBER 2026",
+        "overall_status": "AMBER",
+        "total_allocation_man_days": "TBD / Not Baselined",
+        "release_start_date": "N/A",
+        "resources": [
+          {
+            "name": "Saif",
+            "role": "Team Lead",
+            "allocation_days": "TBD",
+            "responsibility": "Leadership, architecture, frontend, backend, testing"
+          },
+          {
+            "name": "Abitha",
+            "role": "Coordinator",
+            "allocation_days": "TBD",
+            "responsibility": "Coordination, documentation, frontend, backend, testing"
+          },
+          {
+            "name": "Kunasika",
+            "role": "Developer",
+            "allocation_days": "TBD",
+            "responsibility": "Frontend, backend, testing"
+          },
+          {
+            "name": "Lavanya",
+            "role": "Developer",
+            "allocation_days": "TBD",
+            "responsibility": "Frontend, backend, testing"
+          },
+          {
+            "name": "Natheesan",
+            "role": "Developer",
+            "allocation_days": "TBD",
+            "responsibility": "Frontend, backend, testing"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED",
+              "go_live": "",
+              "items": [
+                "**Demo / Prototype:** AVAILABLE"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "SECOND BRAIN SETUP",
+            "core_modules": [
+              "**Second Brain Creation:** IN PROGRESS",
+              "**Folder Architecture Setup:** IN PROGRESS",
+              "**Requirement Ingestion:** IN PROGRESS"
+            ],
+            "integrations": [],
+            "specific_objectives": []
+          },
+          "future_releases": [
+            {
+              "name": "FUTURE",
+              "planned_start": "Planned",
+              "items": [
+                "**Validation:** NEXT WEEK",
+                "**Baseline Ready:** PLANNED"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "TBD / Not Baselined",
+          "original_plan_end": "TBD / Not Baselined",
+          "current_forecast_start": "In Progress",
+          "current_forecast_end": "TBD / Not Baselined",
+          "delay_days": "N/A — baseline not yet approved",
+          "schedule_status": "AT RISK / AMBER",
+          "milestones": [
+            {
+              "milestone": "Demo / Prototype Available",
+              "original_plan": "N/A",
+              "current_forecast": "COMPLETE",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Second Brain Creation",
+              "original_plan": "N/A",
+              "current_forecast": "IN PROGRESS",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Folder Architecture",
+              "original_plan": "N/A",
+              "current_forecast": "IN PROGRESS",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Requirement Ingestion",
+              "original_plan": "N/A",
+              "current_forecast": "IN PROGRESS",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Validation",
+              "original_plan": "N/A",
+              "current_forecast": "NEXT WEEK",
+              "variance": "0 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "Final Baseline",
+              "original_plan": "N/A",
+              "current_forecast": "PLANNED",
+              "variance": "0 days",
+              "status": "RED"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "TBD / Not Baselined",
+          "consumed_to_date": "TBD / Not Baselined",
+          "forecast_remaining": "TBD / Not Baselined",
+          "forecast_total": "TBD / Not Baselined",
+          "overrun": "N/A — no approved baseline",
+          "budget_status": "TBD / NOT BASELINED",
+          "consumed_percentage": 0,
+          "consumed_text": "TBD / Not Baselined consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No schedule change reported.",
+          "scope_change": "No scope change reported.",
+          "scope_change_tag": "Approved",
+          "effort_change": "No effort change reported.",
+          "note": "No material changes this week."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Project end date is not yet confirmed",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Second Brain is still being created and is not yet validated",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Prototype may contain assumptions not confirmed by official QR requirements",
+              "severity": "MEDIUM"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Official Queensland Rail requirements remain the source of truth.",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Final schedule and end date will be confirmed after baseline validation.",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Prototype-only behaviour must not be treated as an official production rule unless confirmed.",
+              "due_date": "N/A"
+            }
+          ],
+          "escalation": "No escalations reported."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 0,
+          "time_elapsed_percent": 0,
+          "effort_consumed_percent": 0,
+          "insight_note": "Project is currently in Second Brain setup and baseline preparation. Validation of the Second Brain, folder architecture, and prototype-vs-official requirements is planned for next week."
+        }
+      }
+    }
+  },
+  "WATERCRAFT_STORA": {
+    "project_id": "WATERCRAFT_STORA",
+    "project_name": "WATERCRAFT STORAGE PORTAL",
+    "company": "UNICOMTIC INCUBATOR",
+    "client": "NORTHERN BEACHES COUNCIL",
+    "weeks": {
+      "35": {
+        "company": "UNICOMTIC INCUBATOR",
+        "project_id": "WATERCRAFT_STORA",
+        "client": "NORTHERN BEACHES COUNCIL",
+        "project_name": "WATERCRAFT STORAGE PORTAL",
+        "current_release": "RELEASED",
+        "week_no": "35",
+        "week_ending_date": "28 AUGUST 2026",
+        "overall_status": "GREEN",
+        "total_allocation_man_days": "TBD / Not Provided",
+        "release_start_date": "17 APRIL 2026",
+        "resources": [
+          {
+            "name": "Saif",
+            "role": "Team Lead",
+            "allocation_days": "TBD",
+            "responsibility": "Leadership, architecture, development, integration"
+          },
+          {
+            "name": "Abitha",
+            "role": "Coordinator",
+            "allocation_days": "TBD",
+            "responsibility": "Coordination, documentation, tracking, testing support"
+          },
+          {
+            "name": "Kunasika",
+            "role": "Developer",
+            "allocation_days": "TBD",
+            "responsibility": "Frontend, backend, testing"
+          },
+          {
+            "name": "Lavanya",
+            "role": "Developer",
+            "allocation_days": "TBD",
+            "responsibility": "Frontend, backend, testing"
+          },
+          {
+            "name": "Natheesan",
+            "role": "Developer",
+            "allocation_days": "TBD",
+            "responsibility": "Frontend, backend, testing"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED",
+              "go_live": "",
+              "items": [
+                "Patch work changes completed",
+                "Addressify integration completed",
+                "SSO login-based redirect for MyBookings completed",
+                "Multiple rollover implementation completed",
+                "Final validation and release completed"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "RELEASED",
+            "core_modules": [],
+            "integrations": [],
+            "specific_objectives": []
+          },
+          "future_releases": [
+            {
+              "name": "FUTURE",
+              "planned_start": "Planned",
+              "items": [
+                "Support and monitoring as needed",
+                "--"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "17 APRIL 2026",
+          "original_plan_end": "10 JULY 2026",
+          "current_forecast_start": "04  AUGUST 2026",
+          "current_forecast_end": "28 AUGUST 2026",
+          "delay_days": "N/A",
+          "schedule_status": "RELEASED",
+          "milestones": [
+            {
+              "milestone": "Project Started",
+              "original_plan": "N/A",
+              "current_forecast": "COMPLETE",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Development",
+              "original_plan": "N/A",
+              "current_forecast": "COMPLETE",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Integration & Validation",
+              "original_plan": "N/A",
+              "current_forecast": "COMPLETE",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Release",
+              "original_plan": "N/A",
+              "current_forecast": "COMPLETE",
+              "variance": "0 days",
+              "status": "GREEN"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "TBD / Not Provided",
+          "consumed_to_date": "TBD / Not Provided",
+          "forecast_remaining": "N/A",
+          "forecast_total": "N/A",
+          "overrun": "N/A",
+          "budget_status": "N/A",
+          "consumed_percentage": 100,
+          "consumed_text": "TBD / Not Provided consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No schedule change reported.",
+          "scope_change": "Completed the changes discussed with Watercraft",
+          "scope_change_tag": "Approved",
+          "effort_change": "No effort change reported.",
+          "note": "Watercraft Storage Portal release completed successfully"
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "No major open risks",
+              "severity": "NONE"
+            },
+            {
+              "description": "No critical open issues",
+              "severity": "NONE"
+            },
+            {
+              "description": "No escalation required",
+              "severity": "NONE"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "No immediate approval required based on the release-completed status shown in the weekly card.",
+              "due_date": "N/A"
+            }
+          ],
+          "escalation": "No escalations reported."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 100,
+          "time_elapsed_percent": 0,
+          "effort_consumed_percent": 0,
+          "insight_note": "Watercraft Storage Portal has completed development, integration, validation, and release. Post-release support and monitoring are available if required."
+        }
+      }
+    }
+  },
+  "CUSTOMER_MOBILE_": {
+    "project_id": "CUSTOMER_MOBILE_",
+    "project_name": "CUSTOMER MOBILE APP",
+    "company": "TIC INCUBATOR",
+    "client": "GREYHOUND DOG RACE",
+    "weeks": {
+      "2": {
+        "company": "TIC INCUBATOR",
+        "project_id": "CUSTOMER_MOBILE_",
+        "client": "GREYHOUND DOG RACE",
+        "project_name": "CUSTOMER MOBILE APP",
+        "current_release": "PHASE 1",
+        "week_no": "2",
+        "week_ending_date": "28 AUGUST 2026",
+        "overall_status": "AMBER",
+        "total_allocation_man_days": "13",
+        "release_start_date": "17 AUGUST 2026",
+        "resources": [
+          {
+            "name": "Gobithas Kalaimakan",
+            "role": "Developer",
+            "allocation_days": "13",
+            "responsibility": "Greyhound customer mobile app enhancements / development"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED",
+              "go_live": "",
+              "items": [
+                "**N/A**"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "PHASE 1",
+            "core_modules": [
+              "API wiring updates",
+              "QR scan-to-ticket-add flow",
+              "response mapping improvements",
+              "polling & UX improvements",
+              "and development setup fixes."
+            ],
+            "integrations": [
+              "Integration improvements completed."
+            ],
+            "specific_objectives": [
+              "Production SSL / HTTPS validation",
+              "final QA and release-readiness checks",
+              "and monitoring live behavior after deployment."
+            ]
+          },
+          "future_releases": [
+            {
+              "name": "FUTURE",
+              "planned_start": "Planned",
+              "items": [
+                "**N/A**",
+                "--"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "17 AUGUST 2026",
+          "original_plan_end": "02 SEPTEMBER 2026",
+          "current_forecast_start": "17 AUGUST 2026",
+          "current_forecast_end": "N/A",
+          "delay_days": "N/A",
+          "schedule_status": "AT RISK",
+          "milestones": [
+            {
+              "milestone": "API Wiring",
+              "original_plan": "N/A",
+              "current_forecast": "Completed",
+              "variance": "N/A",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "QR Scan → Ticket Add Flow",
+              "original_plan": "N/A",
+              "current_forecast": "Completed",
+              "variance": "N/A",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Response Mapping",
+              "original_plan": "N/A",
+              "current_forecast": "Completed",
+              "variance": "N/A",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Polling & UX",
+              "original_plan": "N/A",
+              "current_forecast": "Completed",
+              "variance": "N/A",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Dev Setup",
+              "original_plan": "N/A",
+              "current_forecast": "Completed",
+              "variance": "N/A",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Production Validation",
+              "original_plan": "N/A",
+              "current_forecast": "In Progress",
+              "variance": "N/A",
+              "status": "AMBER"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "13 MAN-DAYS",
+          "consumed_to_date": "10 MAN-DAYS",
+          "forecast_remaining": "3 MAN-DAYS",
+          "forecast_total": "13 MAN-DAYS",
+          "overrun": "0 MAN-DAYS / 0%",
+          "budget_status": "WITHIN BUDGET",
+          "consumed_percentage": 77,
+          "consumed_text": "10 of 13 man-days consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No schedule change reported.",
+          "scope_change": "No scope change reported.",
+          "scope_change_tag": "Approved",
+          "effort_change": "No effort change reported.",
+          "note": "No other material changes reported in this period."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Production SSL / HTTPS validation is still required.",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Ticket timeout / retry behavior should be verified during UAT.",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Over-retry / HTTP service-limit behavior has not yet been validated in production.",
+              "severity": "HIGH"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Confirm production timeline and SSL hardening approach. | **Due:** N/A",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Complete final QA and UAT checks. | **Due:** N/A",
+              "due_date": "N/A"
+            }
+          ],
+          "escalation": "No escalations reported."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 77,
+          "time_elapsed_percent": 69,
+          "effort_consumed_percent": 77,
+          "insight_note": "Scope completion is at 90% with 77% of allocated effort consumed. The remaining focus is production validation, final QA, testing and bug fixing. Overall status remains AMBER due to outstanding production validation and release-readiness risks."
+        }
+      }
+    }
+  },
+  "TICKETING_VENUE_": {
+    "project_id": "TICKETING_VENUE_",
+    "project_name": "TICKETING VENUE SETUP",
+    "company": "TIC INCUBATOR",
+    "client": "OPTIMO SCSTIX",
+    "weeks": {
+      "14": {
+        "company": "TIC INCUBATOR",
+        "project_id": "TICKETING_VENUE_",
+        "client": "OPTIMO SCSTIX",
+        "project_name": "TICKETING VENUE SETUP",
+        "current_release": "PHASE 1",
+        "week_no": "14",
+        "week_ending_date": "28 AUGUST 2026",
+        "overall_status": "AMBER",
+        "total_allocation_man_days": "N/A",
+        "release_start_date": "N/A",
+        "resources": [
+          {
+            "name": "Poovilingam Thamsan",
+            "role": "Project Coordinator",
+            "allocation_days": "N/A",
+            "responsibility": "Table Plan Implementation"
+          },
+          {
+            "name": "Ramanathan Danuharan",
+            "role": "Team Lead",
+            "allocation_days": "N/A",
+            "responsibility": "Increase the Accuracy for Venue Block Detection"
+          },
+          {
+            "name": "Thifshana Jeyabalan",
+            "role": "Developer",
+            "allocation_days": "N/A",
+            "responsibility": "Enhance the Seating – Aisle & Curve; UI Improvements"
+          },
+          {
+            "name": "Gobithas Kalaimakan",
+            "role": "Developer",
+            "allocation_days": "N/A",
+            "responsibility": "Seat Autofill Option – Block Suggestion Validation Improvements"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED",
+              "go_live": "",
+              "items": [
+                "N/A"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "PHASE 1",
+            "core_modules": [
+              "- Table Plan manual flow implemented using tools."
+            ],
+            "integrations": [],
+            "specific_objectives": [
+              "- Complete remaining block detection accuracy work."
+            ]
+          },
+          "future_releases": [
+            {
+              "name": "FUTURE",
+              "planned_start": "Planned",
+              "items": [
+                "N/A",
+                "--"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "N/A",
+          "original_plan_end": "N/A",
+          "current_forecast_start": "N/A",
+          "current_forecast_end": "N/A",
+          "delay_days": "N/A",
+          "schedule_status": "N/A",
+          "milestones": [
+            {
+              "milestone": "Table Plan – Manual Flow",
+              "original_plan": "N/A",
+              "current_forecast": "N/A",
+              "variance": "N/A",
+              "status": "COMPLETED"
+            },
+            {
+              "milestone": "Elements – Sizing with Real Measurements",
+              "original_plan": "N/A",
+              "current_forecast": "N/A",
+              "variance": "N/A",
+              "status": "COMPLETED"
+            },
+            {
+              "milestone": "Logical Validation",
+              "original_plan": "N/A",
+              "current_forecast": "N/A",
+              "variance": "N/A",
+              "status": "COMPLETED"
+            },
+            {
+              "milestone": "Seating – Aisle & Curve",
+              "original_plan": "N/A",
+              "current_forecast": "N/A",
+              "variance": "N/A",
+              "status": "COMPLETED"
+            },
+            {
+              "milestone": "Venue Block Detection Accuracy",
+              "original_plan": "N/A",
+              "current_forecast": "N/A",
+              "variance": "N/A",
+              "status": "IN PROGRESS (50%)"
+            },
+            {
+              "milestone": "3D Venue Implementation",
+              "original_plan": "N/A",
+              "current_forecast": "N/A",
+              "variance": "N/A",
+              "status": "STARTED / PENDING"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "N/A",
+          "consumed_to_date": "N/A",
+          "forecast_remaining": "N/A",
+          "forecast_total": "N/A",
+          "overrun": "N/A",
+          "budget_status": "N/A",
+          "consumed_percentage": 0,
+          "consumed_text": "Allocation and effort figures are currently not available."
+        },
+        "what_changed_this_week": {
+          "schedule_change": "N/A",
+          "scope_change": "Newly added work included real-measurement-based element sizing, logical capacity validation, and Seating Aisle & Curve enhancement.",
+          "scope_change_tag": "N/A",
+          "effort_change": "N/A",
+          "note": "No other material changes reported in this period."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Remaining work on venue block detection accuracy.",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "3D venue implementation not yet completed.",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Optimo SCSTix integration not yet started.",
+              "severity": "HIGH"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Confirm the regular plan for Optimo SCSTix integration.",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Define the estimate once integration work begins.",
+              "due_date": "N/A"
+            }
+          ],
+          "escalation": "No escalations reported."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 0,
+          "time_elapsed_percent": 0,
+          "effort_consumed_percent": 0,
+          "insight_note": "Strong functional progress achieved on table planning and seating enhancements. Next focus areas are block-detection accuracy, 3D implementation, and integration planning."
+        }
+      },
+      "15": {
+        "company": "TIC INCUBATOR",
+        "project_id": "TICKETING_VENUE_",
+        "client": "OPTIMO SCSTIX",
+        "project_name": "TICKETING VENUE SETUP",
+        "current_release": "PHASE 1",
+        "week_no": "15",
+        "week_ending_date": "4 SEPTEMBER 2026",
+        "overall_status": "AMBER",
+        "total_allocation_man_days": "N/A",
+        "release_start_date": "N/A",
+        "resources": [
+          {
+            "name": "Poovilingam Thamsan",
+            "role": "Project Coordinator",
+            "allocation_days": "N/A",
+            "responsibility": "Understand needed Optimo SCSTix database tables for our project"
+          },
+          {
+            "name": "Ramanathan Danuharan",
+            "role": "Team Lead",
+            "allocation_days": "N/A",
+            "responsibility": "Understand needed Optimo SCSTix database tables for our project"
+          },
+          {
+            "name": "Thifshana Jeyabalan",
+            "role": "Developer",
+            "allocation_days": "N/A",
+            "responsibility": "Understand needed Optimo SCSTix database tables for our project"
+          },
+          {
+            "name": "Gobithas Kalaimakan",
+            "role": "Developer",
+            "allocation_days": "N/A",
+            "responsibility": "Understand needed Optimo SCSTix database tables for our project"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [],
+          "current_release": {
+            "name": "PHASE 1",
+            "core_modules": [],
+            "integrations": [],
+            "specific_objectives": []
+          },
+          "future_releases": []
+        },
+        "release_plan": {
+          "original_plan_start": "N/A",
+          "original_plan_end": "N/A",
+          "current_forecast_start": "N/A",
+          "current_forecast_end": "N/A",
+          "delay_days": "N/A",
+          "schedule_status": "AT RISK",
+          "milestones": []
+        },
+        "effort_summary": {
+          "original_allocation": "N/A",
+          "consumed_to_date": "N/A",
+          "forecast_remaining": "N/A",
+          "forecast_total": "N/A",
+          "overrun": "N/A",
+          "budget_status": "N/A",
+          "consumed_percentage": 0,
+          "consumed_text": "Allocation and effort figures are currently not available."
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No schedule change reported.",
+          "scope_change": "No scope change reported.",
+          "scope_change_tag": "Approved",
+          "effort_change": "No effort change reported.",
+          "note": "No other material changes reported in this period."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Optimo SCSTix understanding and mapping work is in early stage.",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Final man-day estimate is not yet available.",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Actual backend integration has not yet started.",
+              "severity": "HIGH"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Confirm aligned save-format approach for integration.",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Review format changes with senior Optimo SCSTix team.",
+              "due_date": "N/A"
+            }
+          ],
+          "escalation": "No escalations reported."
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 0,
+          "time_elapsed_percent": 0,
+          "effort_consumed_percent": 0,
+          "insight_note": "Good progress was made in understanding the Optimo SCSTix backend and aligning our data-save formats. Next focus is finalizing the estimate and starting the actual integration work."
+        }
+      }
+    }
+  }
+}
