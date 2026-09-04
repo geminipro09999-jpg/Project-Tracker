@@ -390,13 +390,13 @@
     "company": "UNICOM TIC INCUBATOR",
     "client": "QUEENSLAND RAIL",
     "weeks": {
-      "36": {
+      "1": {
         "company": "UNICOM TIC INCUBATOR",
         "project_id": "QRP-26-16",
         "client": "QUEENSLAND RAIL",
         "project_name": "QUEENSLAND RAIL BIKE STORAGE",
         "current_release": "SECOND BRAIN SETUP",
-        "week_no": "36",
+        "week_no": "1",
         "week_ending_date": "4 SEPTEMBER 2026",
         "overall_status": "AMBER",
         "total_allocation_man_days": "TBD / Not Baselined",
@@ -579,13 +579,13 @@
     "company": "UNICOMTIC INCUBATOR",
     "client": "NORTHERN BEACHES COUNCIL",
     "weeks": {
-      "35": {
+      "1": {
         "company": "UNICOMTIC INCUBATOR",
         "project_id": "WATERCRAFT_STORA",
         "client": "NORTHERN BEACHES COUNCIL",
         "project_name": "WATERCRAFT STORAGE PORTAL",
         "current_release": "RELEASED",
-        "week_no": "35",
+        "week_no": "1",
         "week_ending_date": "28 AUGUST 2026",
         "overall_status": "GREEN",
         "total_allocation_man_days": "TBD / Not Provided",
@@ -1579,6 +1579,193 @@
           "time_elapsed_percent": 100,
           "effort_consumed_percent": 100,
           "insight_note": "Week 2 focused on implementation and defect resolution; the next stage is environment and pilot validation."
+        }
+      },
+      "3": {
+        "company": "UNICOM TIC INCUBATOR",
+        "project_id": "CAMERA_MODULE",
+        "client": "Internal Product",
+        "project_name": "CAMERA MODULE",
+        "current_release": "PHASE 1A MVP",
+        "week_no": "3",
+        "week_ending_date": "4 SEPTEMBER 2026",
+        "overall_status": "GREEN",
+        "total_allocation_man_days": "10",
+        "release_start_date": "31 AUGUST 2026",
+        "resources": [
+          {
+            "name": "Nilaxshan",
+            "role": "Project Manager / Developer",
+            "allocation_days": "5",
+            "responsibility": "Backend, connector, installer lifecycle, runtime stability, and validation coordination"
+          },
+          {
+            "name": "Kirusthiya",
+            "role": "Developer",
+            "allocation_days": "5",
+            "responsibility": "Dashboard UI, setup workflow, training interface, integration testing, and product improvements"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [],
+          "current_release": {
+            "name": "PHASE 1A MVP",
+            "core_modules": [
+              "Improving connector startup readiness and backend communication",
+              "Improving RTSP and ONVIF camera discovery, capture, and reconnection handling",
+              "Improving clip upload reliability and worker processing",
+              "Improving installer launcher, service control, process execution, and configuration writing",
+              "Improving camera-source and detection-zone steps in the Windows setup wizard",
+              "Improving dashboard authentication, retry handling, training, alerts, and store setup",
+              "Expanding connector, RTSP, clip-upload, wizard, and dashboard validation coverage"
+            ],
+            "integrations": [],
+            "specific_objectives": []
+          },
+          "future_releases": []
+        },
+        "release_plan": {
+          "original_plan_start": "N/A",
+          "original_plan_end": "N/A",
+          "current_forecast_start": "N/A",
+          "current_forecast_end": "N/A",
+          "delay_days": "No confirmed delay reported",
+          "schedule_status": "ON TRACK",
+          "milestones": [
+            {
+              "milestone": "Connector Issue Handling",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Connector Removal Cleanup",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Dashboard UI Update",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Windows Installer Lifecycle",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Camera Source and Zone Setup",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "RTSP and ONVIF Reliability",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Authentication and API Retry",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Clean-Windows Validation",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "Live-Camera End-to-End Validation",
+              "original_plan": "31 Aug 2026",
+              "current_forecast": "04 Sep 2026",
+              "variance": "0 days",
+              "status": "RED"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "10",
+          "consumed_to_date": "10 MAN-DAYS",
+          "forecast_remaining": "0 MAN-DAYS",
+          "forecast_total": "10 MAN-DAYS",
+          "overrun": "0 DAYS",
+          "budget_status": "WITHIN BUDGET",
+          "consumed_percentage": 100,
+          "consumed_text": "10/10 MAN-DAYS"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No schedule change reported.",
+          "scope_change": "**Connector Process:** Improved startup, provisioning, camera communication, capture, upload, and recovery behaviour; **Installer Process:** Improved launcher startup, Windows service control, process execution, configuration writing, and removal cleanup; **Camera Setup Process:** Improved RTSP and ONVIF source discovery, connection checks, preview, and zone configuration; **Dashboard Process:** Improved login, API retry, alerts, training, store management, and setup-wizard behaviour; **Validation Process:** Expanded automated checks for connector tracking, RTSP handling, clip upload, wizard configuration, and dashboard workflows; **Local Environment Research:** Reviewed CPU, GPU, RAM, storage, networking, UPS, and cost requirements for fully local operation; **Pilot Preparation:** Defined clean-Windows and live-camera end-to-end validation procedures; --",
+          "scope_change_tag": "Approved",
+          "effort_change": "No effort change reported.",
+          "note": "No material changes reported."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Windows installer lifecycle is not fully validated on a clean machine",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "RTSP and ONVIF behaviour varies across camera models",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Full camera-to-alert flow requires live-environment validation",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Local hardware capacity and cost are not confirmed",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "AI accuracy requires representative retail footage",
+              "severity": "MEDIUM"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Confirm the pilot camera count and camera specifications",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Confirm the video-retention requirement",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Confirm the available local hardware and budget",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Confirm the clean-Windows testing machine",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Confirm the pilot-store validation schedule",
+              "due_date": "N/A"
+            }
+          ],
+          "escalation": "- No critical escalations identified. Continue monitoring installer, connector, camera, and validation results.\n\n---"
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 100,
+          "time_elapsed_percent": 100,
+          "effort_consumed_percent": 100,
+          "insight_note": "The current process is focused on stability and validation. Clean-Windows testing, local hardware research, and live-camera end-to-end testing remain the main completion gates."
         }
       }
     }

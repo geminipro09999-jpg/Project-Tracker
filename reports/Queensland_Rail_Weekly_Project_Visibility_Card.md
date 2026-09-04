@@ -8,7 +8,7 @@
 - **Client:** QUEENSLAND RAIL
 - **Project Name:** QUEENSLAND RAIL BIKE STORAGE
 - **Current Release / Phase:** SECOND BRAIN SETUP
-- **Week No:** 36
+- **Week No:** 1
 - **Week Ending Date:** 4 SEPTEMBER 2026
 - **Overall Status:** AMBER
 

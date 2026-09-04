@@ -4,12 +4,12 @@
 
 ## PROJECT METADATA
 - **Company:** UNICOMTIC INCUBATOR
-- **Project ID:** N/A / Not Provided
+- **Project ID:** WATERCRAFT_STORA
 - **Client:** NORTHERN BEACHES COUNCIL
 - **Project Name:** WATERCRAFT STORAGE PORTAL
 - **Current Release / Phase:** RELEASED
 - **Project Duration:** 120 DAYS
-- **Week No:** 35
+- **Week No:** 1
 - **Week Ending Date:** 28 AUGUST 2026
 - **Overall Status:** GREEN
 - **Project Status:** PROJECT RELEASED
