@@ -305,11 +305,97 @@
       .btn { width: 100%; justify-content: center; }
       .status-badge-container { width: 100%; justify-content: space-between; }
     }
+
+    /* --- PERFECT SINGLE-PAGE A4 LANDSCAPE PRINT & PDF STYLING --- */
     @media print {
-      .control-bar, .modal-overlay { display: none !important; }
-      body { background: white; padding: 0; }
-      .card-wrapper { margin: 0; box-shadow: none; width: 100%; }
-      @page { size: A4 landscape; margin: 5mm; }
+      @page {
+        size: A4 landscape;
+        margin: 4mm 6mm;
+      }
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      html, body {
+        background: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .control-bar, .modal-overlay, .empty-state-wrapper {
+        display: none !important;
+      }
+      .card-wrapper {
+        display: block !important;
+        margin: 0 auto !important;
+        box-shadow: none !important;
+        border: 2px solid #0f2744 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+      }
+      .card-header-bar {
+        padding: 8px 14px !important;
+      }
+      .header-main-title {
+        font-size: 1.15rem !important;
+      }
+      .header-sub-title {
+        font-size: 0.75rem !important;
+      }
+      .meta-grid {
+        grid-template-columns: repeat(7, 1fr) !important;
+      }
+      .meta-item {
+        padding: 6px 4px !important;
+      }
+      .meta-label {
+        font-size: 0.62rem !important;
+      }
+      .meta-value {
+        font-size: 0.75rem !important;
+      }
+      .resource-section {
+        padding: 6px 10px !important;
+      }
+      .resource-header-bar {
+        padding: 4px 8px !important;
+        font-size: 0.7rem !important;
+      }
+      .resource-table th, .resource-table td {
+        padding: 4px 6px !important;
+        font-size: 0.7rem !important;
+      }
+      .total-alloc-num {
+        font-size: 1.8rem !important;
+        margin: 2px 0 !important;
+      }
+      .sections-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        padding: 8px 10px !important;
+      }
+      .section-title-bar {
+        padding: 4px 8px !important;
+        font-size: 0.72rem !important;
+      }
+      .section-content {
+        padding: 6px 8px !important;
+        font-size: 0.7rem !important;
+      }
+      .donut-chart {
+        width: 54px !important;
+        height: 54px !important;
+      }
+      .donut-number {
+        font-size: 0.75rem !important;
+      }
+      .card-footer {
+        padding: 4px 10px !important;
+        font-size: 0.62rem !important;
+      }
     }
   </style>
 </head>
@@ -335,7 +421,7 @@
         <i class="fa-solid fa-cloud-arrow-up"></i> Upload Dev MD
       </button>
       <button class="btn btn-primary" onclick="window.print()">
-        <i class="fa-solid fa-print"></i> Export PDF
+        <i class="fa-solid fa-print"></i> Export PDF (A4 Landscape)
       </button>
     </div>
   </div>
@@ -679,7 +765,7 @@
       }
       data.project_id = pId;
 
-      data.current_release = getField('\\*\\*(?:Current Release / Phase|Current Release):\\*\\*\\s*(.*?)\\n', 'RELEASE 1');
+      data.current_release = getField('\\*\\*(?:Current Release \/ Phase|Current Release):\\*\\*\\s*(.*?)\\n', 'RELEASE 1');
       data.week_no = getField('\\*\\*(?:Week No):\\*\\*\\s*(.*?)\\n', '1');
       data.week_ending_date = getField('\\*\\*(?:Week Ending Date):\\*\\*\\s*(.*?)\\n', 'N/A');
 
@@ -818,7 +904,7 @@
       data.what_changed_this_week = {
         schedule_change: getField('\\*\\*(?:Schedule Change|Main Objective):\\*\\*\\s*(.*?)\\n', 'No schedule change reported.'),
         scope_change: getField('\\*\\*(?:Scope Change|Patch Work|Completed Work):\\*\\*\\s*(.*?)\\n', 'No scope change reported.'),
-        scope_change_tag: getField('\\*\\*(?:Scope Change Tag):\\*\\*\\s*(.*?)\n', 'Approved'),
+        scope_change_tag: getField('\\*\\*(?:Scope Change Tag):\\*\\*\\s*(.*?)\\n', 'Approved'),
         effort_change: getField('\\*\\*(?:Effort Change|Enhancements):\\*\\*\\s*(.*?)\\n', 'No effort change reported.'),
         note: getField('\\*\\*(?:Material Notes):\\*\\*\\s*(.*?)\\n', 'No material changes this week.')
       };
