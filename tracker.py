@@ -89,41 +89,77 @@ def parse_markdown(md_text):
         "future_releases": []
     }
 
-    deliv_match = re.search(r'###\s*(?:Delivered Releases|Delivered / Completed|Previous / Available).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    # Delivered Releases
+    deliv_match = re.search(r'###\s*(?:Delivered Releases|Delivered / Completed|Previous / Available|Completed This Period).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if deliv_match:
         items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', deliv_match.group(1)) if x.strip()]
         if items:
             scope_journey["delivered_releases"] = [{"name": "DELIVERED", "go_live": "", "items": items}]
 
-    curr_scope_match = re.search(r'###\s*(?:Current Release|Current Phase|This Week).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    # Current Release Section
+    curr_scope_match = re.search(r'###\s*(?:Current Release|Current Phase|Current Work|This Week).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if curr_scope_match:
         text = curr_scope_match.group(1)
-        
-        core_m = re.search(r'\*\*(?:Core Modules|Completed This Period|Current Work):\*\*\s*(.*?)\n', text)
-        if core_m:
-            scope_journey["current_release"]["core_modules"] = [x.strip() for x in core_m.group(1).split(',')]
-        
-        integ_m = re.search(r'\*\*(?:Integrations|Integration Status):\*\*\s*(.*?)\n', text)
-        if integ_m:
-            scope_journey["current_release"]["integrations"] = [x.strip() for x in integ_m.group(1).split(',')]
-            
-        obj_m = re.search(r'\*\*(?:Specific Objectives|Upcoming / Pending):\*\*\s*(.*?)\n', text)
-        if obj_m:
-            scope_journey["current_release"]["specific_objectives"] = [x.strip() for x in obj_m.group(1).split(',')]
 
-        # Fallback list items if no key-value match
+        # 1. Parse Core Modules Table if present
+        core_table = re.search(r'####\s*Core Modules.*?\n\|.*?\n\|[:\s|-]+\n(.*?)(?=####|###|\n---\n|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+        if core_table:
+            modules = []
+            for line in core_table.group(1).strip().split('\n'):
+                cols = [c.strip() for c in line.split('|')[1:-1]]
+                if len(cols) >= 2:
+                    mod_name = cols[0].replace('**', '')
+                    status = cols[2] if len(cols) >= 3 else cols[1]
+                    modules.append(f"**{mod_name}:** {status}")
+            if modules:
+                scope_journey["current_release"]["core_modules"] = modules
+
+        # 2. Parse Integrations Table if present
+        integ_table = re.search(r'####\s*Integrations.*?\n\|.*?\n\|[:\s|-]+\n(.*?)(?=####|###|\n---\n|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+        if integ_table:
+            integrations = []
+            for line in integ_table.group(1).strip().split('\n'):
+                cols = [c.strip() for c in line.split('|')[1:-1]]
+                if len(cols) >= 2:
+                    integ_name = cols[0].replace('**', '')
+                    purpose = cols[1]
+                    status = cols[2] if len(cols) >= 3 else ""
+                    status_text = f" — {status}" if status else ""
+                    integrations.append(f"**{integ_name}:** {purpose}{status_text}")
+            if integrations:
+                scope_journey["current_release"]["integrations"] = integrations
+
+        # 3. Parse Specific Objectives
+        obj_sec = re.search(r'####\s*Specific Objectives.*?\n(.*?)(?=###|\n---\n|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+        if obj_sec:
+            objs = [x.strip() for x in re.findall(r'(?:\*\*Objective\s*\d+[^*]*\*\*|[-*])\s*(.*?)\n', obj_sec.group(1)) if x.strip()]
+            if not objs:
+                objs = [line.strip() for line in obj_sec.group(1).split('\n') if line.strip() and not line.startswith('#')]
+            if objs:
+                scope_journey["current_release"]["specific_objectives"] = objs
+
+        # Fallbacks for standard key-value or bullet lists
+        if not scope_journey["current_release"]["core_modules"]:
+            core_m = re.search(r'\*\*(?:Core Modules|Completed This Period|Current Work):\*\*\s*(.*?)\n', text)
+            if core_m:
+                scope_journey["current_release"]["core_modules"] = [x.strip() for x in core_m.group(1).split(',')]
+            
+        if not scope_journey["current_release"]["integrations"]:
+            integ_m = re.search(r'\*\*(?:Integrations|Integration Status):\*\*\s*(.*?)\n', text)
+            if integ_m:
+                scope_journey["current_release"]["integrations"] = [x.strip() for x in integ_m.group(1).split(',')]
+
         if not scope_journey["current_release"]["core_modules"]:
             list_items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', text) if x.strip()]
             if list_items:
-                scope_journey["current_release"]["core_modules"] = list_items[:3]
-                scope_journey["current_release"]["integrations"] = list_items[3:6]
-                scope_journey["current_release"]["specific_objectives"] = list_items[6:]
+                scope_journey["current_release"]["core_modules"] = list_items
 
-    fut_match = re.search(r'###\s*(?:Future Releases|Post-Release / Next|Next Phase|Next Week).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    # Future Releases
+    fut_match = re.search(r'###\s*(?:Future Releases|Post-Release / Next|Next Phase|Next Week|Upcoming / Pending).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if fut_match:
         items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', fut_match.group(1)) if x.strip()]
         if items:
-            scope_journey["future_releases"] = [{"name": "FUTURE", "planned_start": "Planned", "items": items}]
+            scope_journey["future_releases"] = [{"name": "FUTURE / UPCOMING", "planned_start": "Planned", "items": items}]
 
     data['scope_journey'] = scope_journey
 
@@ -138,7 +174,7 @@ def parse_markdown(md_text):
         "milestones": []
     }
 
-    m_table_match = re.search(r'\|\s*Milestone\s*\|.*?\n\|[:\s|-]+\n(.*?)(?=\n---|###|\n\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    m_table_match = re.search(r'\|\s*(?:Milestone|Work Item)\s*\|.*?\n\|[:\s|-]+\n(.*?)(?=\n---|###|\n\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if m_table_match:
         lines = m_table_match.group(1).strip().split('\n')
         for line in lines:
@@ -151,10 +187,21 @@ def parse_markdown(md_text):
                     "variance": cols[3],
                     "status": cols[4].upper()
                 })
+            elif len(cols) == 4:
+                # 4-column format: Work Item | Category | Status | Remarks
+                m_status = cols[2].upper()
+                status_color = "GREEN" if "COMPLET" in m_status else ("AMBER" if "PROGRESS" in m_status or "START" in m_status else "RED")
+                rel_plan["milestones"].append({
+                    "milestone": cols[0],
+                    "original_plan": cols[1],
+                    "current_forecast": cols[3] if cols[3] else cols[2],
+                    "variance": "0 days",
+                    "status": status_color
+                })
             elif len(cols) >= 2:
                 # 2-column table format (Milestone | Status)
                 m_status = cols[1].upper()
-                status_color = "GREEN" if "COMPLETE" in m_status else ("AMBER" if "PROGRESS" in m_status else "RED")
+                status_color = "GREEN" if "COMPLET" in m_status else ("AMBER" if "PROGRESS" in m_status or "START" in m_status else "RED")
                 rel_plan["milestones"].append({
                     "milestone": cols[0],
                     "original_plan": "N/A",
@@ -189,12 +236,34 @@ def parse_markdown(md_text):
     }
 
     # Section 4: What Changed This Week
+    sched_change = get_field(r'\*\*(?:Schedule Change|Main Objective):\*\*\s*(.*?)\n', "")
+    scope_change = get_field(r'\*\*(?:Scope Change|Patch Work|Completed Work):\*\*\s*(.*?)\n', "")
+    effort_change = get_field(r'\*\*(?:Effort Change|Enhancements):\*\*\s*(.*?)\n', "")
+    material_notes = get_field(r'\*\*(?:Material Notes|Note):\*\*\s*(.*?)\n', "")
+
+    # Subheading bullet fallbacks if key-values are empty
+    sec4_match = re.search(r'##\s*4\.\s*WHAT CHANGED.*?\n(.*?)(?=##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    if sec4_match:
+        s4_text = sec4_match.group(1)
+        if not scope_change:
+            comp_bullets = re.search(r'###\s*(?:Completed Work|Delivered|Work In Progress).*?\n(.*?)(?=###|\n##|\Z)', s4_text, re.DOTALL | re.IGNORECASE)
+            if comp_bullets:
+                bullets = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', comp_bullets.group(1)) if x.strip()]
+                if bullets:
+                    scope_change = "; ".join(bullets)
+        if not effort_change:
+            enh_bullets = re.search(r'###\s*(?:Enhancements|Newly Added Tasks|Support / Development Setup).*?\n(.*?)(?=###|\n##|\Z)', s4_text, re.DOTALL | re.IGNORECASE)
+            if enh_bullets:
+                bullets = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', enh_bullets.group(1)) if x.strip()]
+                if bullets:
+                    effort_change = "; ".join(bullets)
+
     data['what_changed_this_week'] = {
-        "schedule_change": get_field(r'\*\*(?:Schedule Change|Main Objective):\*\*\s*(.*?)\n', "No schedule change reported."),
-        "scope_change": get_field(r'\*\*(?:Scope Change|Patch Work|Completed Work):\*\*\s*(.*?)\n', "No scope change reported."),
+        "schedule_change": sched_change if sched_change else "No schedule change reported.",
+        "scope_change": scope_change if scope_change else "No scope change reported.",
         "scope_change_tag": get_field(r'\*\*(?:Scope Change Tag):\*\*\s*(.*?)\n', "Approved"),
-        "effort_change": get_field(r'\*\*(?:Effort Change|Enhancements):\*\*\s*(.*?)\n', "No effort change reported."),
-        "note": get_field(r'\*\*(?:Material Notes):\*\*\s*(.*?)\n', "No material changes this week.")
+        "effort_change": effort_change if effort_change else "No effort change reported.",
+        "note": material_notes if material_notes else "No material changes reported."
     }
 
     # Section 5: Risks & CEO Attention
@@ -216,10 +285,16 @@ def parse_markdown(md_text):
             for it in items:
                 decisions.append({"description": it, "due_date": "N/A"})
 
+    escalation_val = get_field(r'\*\*(?:Escalation Status):\*\*\s*(.*?)\n', "")
+    if not escalation_val:
+        esc_match = re.search(r'###\s*Escalation Status.*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+        if esc_match:
+            escalation_val = esc_match.group(1).strip()
+
     data['risks_and_attention'] = {
         "top_risks": top_risks,
         "decisions_required": decisions,
-        "escalation": get_field(r'\*\*(?:Escalation Status):\*\*\s*(.*?)\n', "No escalations reported.")
+        "escalation": escalation_val if escalation_val else "No escalations reported."
     }
 
     # Section 6: At A Glance

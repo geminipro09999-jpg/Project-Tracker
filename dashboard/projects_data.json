@@ -70,7 +70,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE",
+              "name": "FUTURE / UPCOMING",
               "planned_start": "Planned",
               "items": [
                 "**Validation:** NEXT WEEK",
@@ -146,7 +146,7 @@
           "scope_change": "No scope change reported.",
           "scope_change_tag": "Approved",
           "effort_change": "No effort change reported.",
-          "note": "No material changes this week."
+          "note": "No material changes reported."
         },
         "risks_and_attention": {
           "top_risks": [
@@ -177,7 +177,7 @@
               "due_date": "N/A"
             }
           ],
-          "escalation": "No escalations reported."
+          "escalation": "- No critical escalation at present.\n- Management attention may be required after validation if project scope, schedule, or production gaps remain unresolved.\n\n---"
         },
         "at_a_glance": {
           "overall_progress_percent": 0,
@@ -259,7 +259,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE",
+              "name": "FUTURE / UPCOMING",
               "planned_start": "Planned",
               "items": [
                 "Support and monitoring as needed",
@@ -344,7 +344,7 @@
               "due_date": "N/A"
             }
           ],
-          "escalation": "No escalations reported."
+          "escalation": "- No escalation required.\n- Project released successfully.\n- Post-release support only if needed.\n\n---"
         },
         "at_a_glance": {
           "overall_progress_percent": 100,
@@ -402,15 +402,11 @@
             "integrations": [
               "Integration improvements completed."
             ],
-            "specific_objectives": [
-              "Production SSL / HTTPS validation",
-              "final QA and release-readiness checks",
-              "and monitoring live behavior after deployment."
-            ]
+            "specific_objectives": []
           },
           "future_releases": [
             {
-              "name": "FUTURE",
+              "name": "FUTURE / UPCOMING",
               "planned_start": "Planned",
               "items": [
                 "**N/A**",
@@ -513,7 +509,7 @@
               "due_date": "N/A"
             }
           ],
-          "escalation": "No escalations reported."
+          "escalation": "- No critical escalations reported."
         },
         "at_a_glance": {
           "overall_progress_percent": 77,
@@ -583,13 +579,11 @@
               "- Table Plan manual flow implemented using tools."
             ],
             "integrations": [],
-            "specific_objectives": [
-              "- Complete remaining block detection accuracy work."
-            ]
+            "specific_objectives": []
           },
           "future_releases": [
             {
-              "name": "FUTURE",
+              "name": "FUTURE / UPCOMING",
               "planned_start": "Planned",
               "items": [
                 "N/A",
@@ -692,7 +686,7 @@
               "due_date": "N/A"
             }
           ],
-          "escalation": "No escalations reported."
+          "escalation": "- No critical escalations reported."
         },
         "at_a_glance": {
           "overall_progress_percent": 0,
@@ -739,14 +733,41 @@
           }
         ],
         "scope_journey": {
-          "delivered_releases": [],
+          "delivered_releases": [
+            {
+              "name": "DELIVERED",
+              "go_live": "",
+              "items": [
+                "Meeting arranged with senior Optimo SCSTix development member.",
+                "Studied how venues, facilities, blocks, and seating are created.",
+                "Understood which tables are used and how data is connected / saved.",
+                "Reviewed existing save structure for venue, block, and seating data."
+              ]
+            }
+          ],
           "current_release": {
             "name": "PHASE 1",
-            "core_modules": [],
+            "core_modules": [
+              "Aligning our system with Optimo SCSTix backend expectations.",
+              "Updating venue save format and block save format.",
+              "Updating seating approach for row gap, row seating, and individual seating."
+            ],
             "integrations": [],
             "specific_objectives": []
           },
-          "future_releases": []
+          "future_releases": [
+            {
+              "name": "FUTURE / UPCOMING",
+              "planned_start": "Planned",
+              "items": [
+                "Finalize remaining data format changes.",
+                "Start actual backend integration implementation.",
+                "Share estimated man-days in next week's update.",
+                "**Journey Note:** Optimo understanding phase started.",
+                "--"
+              ]
+            }
+          ]
         },
         "release_plan": {
           "original_plan_start": "N/A",
@@ -755,7 +776,50 @@
           "current_forecast_end": "N/A",
           "delay_days": "N/A",
           "schedule_status": "AT RISK",
-          "milestones": []
+          "milestones": [
+            {
+              "milestone": "Optimo SCSTix backend study",
+              "original_plan": "Newly Added",
+              "current_forecast": "Studied venue, facility, block, and seating save flow",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Technical discussion & suggestions",
+              "original_plan": "Newly Added",
+              "current_forecast": "Met senior Optimo SCSTix developer and gathered guidance",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Venue save format changes",
+              "original_plan": "Newly Added",
+              "current_forecast": "Updated save approach to match integration needs",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Block save format changes",
+              "original_plan": "Newly Added",
+              "current_forecast": "Adjusted block data saving structure",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Seating structure approach changes",
+              "original_plan": "Newly Added",
+              "current_forecast": "Updated row gap, row seating, and individual seating approach",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Integration estimation & implementation",
+              "original_plan": "Next Step",
+              "current_forecast": "Estimate and implementation to continue next week",
+              "variance": "0 days",
+              "status": "AMBER"
+            }
+          ]
         },
         "effort_summary": {
           "original_allocation": "N/A",
@@ -799,7 +863,7 @@
               "due_date": "N/A"
             }
           ],
-          "escalation": "No escalations reported."
+          "escalation": "- No critical escalations reported."
         },
         "at_a_glance": {
           "overall_progress_percent": 0,
@@ -865,13 +929,47 @@
           ],
           "current_release": {
             "name": "RELEASE 1",
-            "core_modules": [],
-            "integrations": [],
-            "specific_objectives": []
+            "core_modules": [
+              "**Authentication & Security:** 🟢 Strong",
+              "**Tenant Management:** 🟢 Strong",
+              "**Platform Administration:** 🟢 Strong",
+              "**Roles & Permissions:** 🟢 Strong",
+              "**Organization Administration:** 🟢 Strong",
+              "**Employee Management:** 🟢 Strong",
+              "**Onboarding & Offboarding:** 🟢 Strong",
+              "**Leave Management:** 🟢 Complete",
+              "**Attendance:** 🟢 Strong",
+              "**Calendar & Scheduling:** 🟢 Strong",
+              "**Work Management:** 🟡 In Progress",
+              "**Workforce Intelligence:** 🟠 Early",
+              "**Billing & Subscription:** 🟡 In Progress"
+            ],
+            "integrations": [
+              "**Stripe:** Subscription/payment processing and payment event handling — 🟡 Partial - webhooks only, no checkout/payment-initiation flow yet",
+              "**Google Calendar:** External calendar synchronization — 🔴 Not Implemented",
+              "**Microsoft Outlook Calendar:** External calendar synchronization — 🔴 Not Implemented",
+              "**Google (admin SSO):** Platform admin login — 🟢 Implemented",
+              "**GitHub (tenant):** Tenant-user OAuth connect/disconnect — 🟡 Partial - functional but narrow",
+              "**Microsoft / Zoom:** Platform-level OAuth config — 🟠 Config-only - no working tenant SSO/meeting flow yet",
+              "**Email Service - SendGrid / Resend:** Invitations, notifications and system emails — 🟢 Implemented",
+              "**Cloudflare R2:** File/object storage — 🟢 Implemented",
+              "**AWS Rekognition:** Identity verification / biometric liveness — 🟡 Partial - works for enrollment, no recurring/random verification",
+              "**Tray Monitoring Agent:** Workforce activity and device data collection — 🟢 Collectors wired and working end-to-end"
+            ],
+            "specific_objectives": [
+              "tenant isolation, tenant lifecycle, platform administration, role & permission framework, subscription/module entitlement structure",
+              "organization structure, employee management, onboarding/offboarding, leave management, attendance management, employee self-service",
+              "company and individual calendar, recurring events, participant management, conflict detection, leave/training/review-related calendar events",
+              "projects, objectives and milestones, tasks, sprints, Kanban-based execution. Remaining gaps: time tracking, reporting, and some progress-calculation capabilities",
+              "application/activity data collection, device-state information, productivity scoring, screenshots, identity verification, exception detection, wellness-related nudges - the product direction is \"Work Context Intelligence\" (connecting activity data with work context), not plain employee monitoring",
+              "subscription plans, module entitlements, invoice management, payment event handling, Stripe integration foundation. Remaining: actual Stripe checkout/payment initiation and subscription lifecycle APIs",
+              "production cloud environment, domain configuration, SSL/HTTPS, deployment pipeline, monitoring/logging, security validation, performance validation, final UAT, release sign-off",
+              "*Executive summary:** The current release is focused on establishing ONEXSO's core SaaS, HR, workforce management and workforce intelligence foundations, while completing the remaining integrations, production-readiness activities and selected operational capabilities required for release."
+            ]
           },
           "future_releases": [
             {
-              "name": "FUTURE",
+              "name": "FUTURE / UPCOMING",
               "planned_start": "Planned",
               "items": [
                 "**RELEASE 2 (candidate scope, pending confirmation)** - drawn from the current known gap list: Work Management time tracking, subtasks and Productivity Validation; Work Management/Organization reports & dashboards; Support Center backend; Stripe checkout/payment-collection flow; Google/Outlook calendar sync; Device Administration (asset inventory); data-privacy workflows (DSAR/retention); centralized audit trail; global search; System Control (maintenance mode/job control/release tracking)",
@@ -940,7 +1038,7 @@
           "scope_change": "None this week",
           "scope_change_tag": "Approved",
           "effort_change": "None this week",
-          "note": "TBD"
+          "note": "Google/Outlook OAuth configuration exists, but actual calendar synchronization is **not implemented yet**."
         },
         "risks_and_attention": {
           "top_risks": [
@@ -967,7 +1065,7 @@
               "due_date": "(PostgreSQL or MySQL)"
             }
           ],
-          "escalation": "No escalations reported."
+          "escalation": "TBD\n\n---"
         },
         "at_a_glance": {
           "overall_progress_percent": 0,
