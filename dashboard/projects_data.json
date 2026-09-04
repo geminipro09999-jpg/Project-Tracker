@@ -14,6 +14,195 @@
         "week_no": "1",
         "week_ending_date": "04.09.2026",
         "overall_status": "AMBER",
+        "total_allocation_man_days": "123",
+        "release_start_date": "24.08.2026",
+        "resources": [
+          {
+            "name": "Mathusan",
+            "role": "Tenant Admin",
+            "allocation_days": "118 days",
+            "responsibility": "User Roles/Permissions, Outlet & Till Access, Till Authorization, POS Access, Reports R&D"
+          },
+          {
+            "name": "Nivethika",
+            "role": "Product / Tenant Admin",
+            "allocation_days": "30 days",
+            "responsibility": "Product Setup, Category, Units & Pack, Tax, Return Policy, Barcode R&D"
+          },
+          {
+            "name": "Yabez",
+            "role": "Platform / Super Admin",
+            "allocation_days": "92 days",
+            "responsibility": "Platform User Management, Capability Registry, CI/CD, DB & Email"
+          },
+          {
+            "name": "Tharmithan",
+            "role": "POS / Cashier / Online Order",
+            "allocation_days": "100 days",
+            "responsibility": "Online Order, UI/UX, Permissions, Environment & Build Troubleshooting"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED BASELINE",
+              "go_live": "",
+              "items": [
+                "User Creation & Permissions progressed",
+                "Outlet / Till access model defined",
+                "Category Management journey defined",
+                "Product Units model defined",
+                "Platform User Management and CI/CD progressed",
+                "Online Order",
+                "Permission standard",
+                "Environment issues resolved"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "Access Control, Product Setup, Platform Admin & Online Order",
+            "core_modules": [
+              "User Roles & Permissions - Tenant Level",
+              "POS Login based on Role & Permission",
+              "Reports Screens R&D",
+              "Product & Till Setup",
+              "Tax Management",
+              "Return Policy Selection",
+              "Barcode R&D & Implementation",
+              "User Roles & Permissions - Admin Level",
+              "Return Policy Management",
+              "DB Change (MS SQL) and Deployment",
+              "Email Service Template",
+              "Online Order Preparation Flow",
+              "Till Side Preparation",
+              "Collection Finish"
+            ],
+            "integrations": [],
+            "specific_objectives": []
+          },
+          "future_releases": [
+            {
+              "name": "NEXT STAGE / FUTURE",
+              "planned_start": "Planned",
+              "items": [
+                "End-to-End Permission validation",
+                "Module/Menu visibility by user access",
+                "Barcode scanning integration",
+                "Advanced Reports (Sales, Product)",
+                "Online Order"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "N/A",
+          "original_plan_end": "N/A",
+          "current_forecast_start": "N/A",
+          "current_forecast_end": "N/A",
+          "delay_days": "TBD",
+          "schedule_status": "TBD",
+          "milestones": []
+        },
+        "effort_summary": {
+          "original_allocation": "123",
+          "consumed_to_date": "123 MAN-DAYS",
+          "forecast_remaining": "TBD",
+          "forecast_total": "TBD",
+          "overrun": "TBD",
+          "budget_status": "TBD",
+          "consumed_percentage": 85,
+          "consumed_text": "123 MAN-DAYS consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No baseline changes reported.",
+          "scope_change": "Bundle / Kit removed, Base SKU manual entry, Permission taxonomy changes, UI/UX changes.",
+          "scope_change_tag": "Approved",
+          "effort_change": "3 leave days — Nivethika: 24 & 28 Aug; Yabez: 24 Aug.",
+          "note": "Emulator time & Cash Drawer issues fixed, Build environment resolved, Git sync verified."
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Permission model alignment (Tenant/Admin/Cashier)",
+              "severity": "HIGH"
+            },
+            {
+              "description": "POS Login dependent on permission resolution",
+              "severity": "HIGH"
+            },
+            {
+              "description": "Online Order flow still partial",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Product requirements evolving",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "DB Migration",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Build / environment issues",
+              "severity": "LOW"
+            },
+            {
+              "description": "Reporting data inconsistency",
+              "severity": "LOW"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Final Tenant Permission Model",
+              "due_date": "TBD"
+            },
+            {
+              "description": "Final Admin Permission Model",
+              "due_date": "TBD"
+            },
+            {
+              "description": "POS Login Permission Contract",
+              "due_date": "TBD"
+            },
+            {
+              "description": "Return Policy Contract",
+              "due_date": "TBD"
+            },
+            {
+              "description": "Barcode Implementation Approach",
+              "due_date": "TBD"
+            },
+            {
+              "description": "DB Migration / Deployment Approval",
+              "due_date": "TBD"
+            },
+            {
+              "description": "Email Template Final Design",
+              "due_date": "TBD"
+            },
+            {
+              "description": "Online Order Lifecycle Finalization",
+              "due_date": "TBD"
+            }
+          ],
+          "escalation": "Permission alignment: Blocks POS Login & module access; DB migration & deployment: Potential release blocker; Barcode feasibility: Hardware / data integration risk; Return Policy finalization: Cross-module contract risk; Online Order completion: Online Order flow still partial"
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 85,
+          "time_elapsed_percent": 0,
+          "effort_consumed_percent": 0,
+          "insight_note": "Project update received."
+        }
+      },
+      "2": {
+        "company": "TIC INCUBATOR",
+        "project_id": "ONEVERZ_EPOS",
+        "client": "CLIENT",
+        "project_name": "OneVerz EPOS",
+        "current_release": "Access Control, Product Setup, Platform Admin & Online Order",
+        "week_no": "2",
+        "week_ending_date": "04.09.2026",
+        "overall_status": "AMBER",
         "total_allocation_man_days": "TBD",
         "release_start_date": "31.08.2026",
         "resources": [
