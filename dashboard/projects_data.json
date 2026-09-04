@@ -45,7 +45,7 @@
         "scope_journey": {
           "delivered_releases": [
             {
-              "name": "DELIVERED / PREVIOUS",
+              "name": "DELIVERED BASELINE",
               "go_live": "",
               "items": [
                 "User Creation & Permissions progressed",
@@ -81,7 +81,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE / UPCOMING",
+              "name": "NEXT STAGE / FUTURE",
               "planned_start": "Planned",
               "items": [
                 "End-to-End Permission validation",
@@ -247,7 +247,7 @@
         "scope_journey": {
           "delivered_releases": [
             {
-              "name": "DELIVERED / PREVIOUS",
+              "name": "DELIVERED BASELINE",
               "go_live": "",
               "items": [
                 "**Demo / Prototype:** AVAILABLE"
@@ -266,7 +266,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE / UPCOMING",
+              "name": "NEXT STAGE / FUTURE",
               "planned_start": "Planned",
               "items": [
                 "**Validation:** NEXT WEEK",
@@ -436,7 +436,7 @@
         "scope_journey": {
           "delivered_releases": [
             {
-              "name": "DELIVERED / PREVIOUS",
+              "name": "DELIVERED BASELINE",
               "go_live": "",
               "items": [
                 "Patch work changes completed",
@@ -455,7 +455,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE / UPCOMING",
+              "name": "NEXT STAGE / FUTURE",
               "planned_start": "Planned",
               "items": [
                 "Support and monitoring as needed",
@@ -579,7 +579,7 @@
         "scope_journey": {
           "delivered_releases": [
             {
-              "name": "DELIVERED / PREVIOUS",
+              "name": "DELIVERED BASELINE",
               "go_live": "",
               "items": [
                 "**N/A**"
@@ -602,7 +602,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE / UPCOMING",
+              "name": "NEXT STAGE / FUTURE",
               "planned_start": "Planned",
               "items": [
                 "**N/A**",
@@ -753,7 +753,7 @@
         "scope_journey": {
           "delivered_releases": [
             {
-              "name": "DELIVERED / PREVIOUS",
+              "name": "DELIVERED BASELINE",
               "go_live": "",
               "items": [
                 "N/A"
@@ -770,7 +770,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE / UPCOMING",
+              "name": "NEXT STAGE / FUTURE",
               "planned_start": "Planned",
               "items": [
                 "N/A",
@@ -922,7 +922,7 @@
         "scope_journey": {
           "delivered_releases": [
             {
-              "name": "DELIVERED / PREVIOUS",
+              "name": "DELIVERED BASELINE",
               "go_live": "",
               "items": [
                 "Meeting arranged with senior Optimo SCSTix development member.",
@@ -944,7 +944,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE / UPCOMING",
+              "name": "NEXT STAGE / FUTURE",
               "planned_start": "Planned",
               "items": [
                 "Finalize remaining data format changes.",
@@ -1061,6 +1061,221 @@
       }
     }
   },
+  "CAMERA_MODULE": {
+    "project_id": "CAMERA_MODULE",
+    "project_name": "CAMERA MODULE",
+    "company": "UNICOM TIC INCUBATOR",
+    "client": "Not provided",
+    "weeks": {
+      "1": {
+        "company": "UNICOM TIC INCUBATOR",
+        "project_id": "CAMERA_MODULE",
+        "client": "Not provided",
+        "project_name": "CAMERA MODULE",
+        "current_release": "PHASE 1A MVP",
+        "week_no": "1",
+        "week_ending_date": "4 SEPTEMBER 2026",
+        "overall_status": "GREEN",
+        "total_allocation_man_days": "52",
+        "release_start_date": "13 AUGUST 2026",
+        "resources": [
+          {
+            "name": "Nilaxshan",
+            "role": "Project Manager / Developer",
+            "allocation_days": "26",
+            "responsibility": "Architecture, backend, AI pipeline, connector, deployment, and release coordination"
+          },
+          {
+            "name": "Kirusthiya",
+            "role": "Developer",
+            "allocation_days": "26",
+            "responsibility": "Dashboard UI, installer workflow, integration, testing, fixes, and product improvements"
+          }
+        ],
+        "scope_journey": {
+          "delivered_releases": [
+            {
+              "name": "DELIVERED BASELINE",
+              "go_live": "",
+              "items": [
+                "**Core Camera Pipeline:** RTSP camera capture and clip processing",
+                "**Backend:** API, database persistence, risk scoring, and alert generation",
+                "**AI Processing:** Detection, tracking, zone mapping, and event extraction",
+                "**Dashboard:** Review, alert management, training, and configuration workflows",
+                "**Connector:** Windows connector installer and setup workflow",
+                "**Deployment:** Azure deployment and CI/CD workflow"
+              ]
+            }
+          ],
+          "current_release": {
+            "name": "PHASE 1A MVP",
+            "core_modules": [
+              "Camera and connector management",
+              "AI event processing",
+              "risk engine",
+              "alerts",
+              "zone configuration",
+              "dashboard review",
+              "and training workflows"
+            ],
+            "integrations": [
+              "RTSP",
+              "ONVIF",
+              "MP4",
+              "PostgreSQL",
+              "Redis",
+              "object storage",
+              "Windows connector",
+              "and Azure deployment"
+            ],
+            "specific_objectives": []
+          },
+          "future_releases": [
+            {
+              "name": "NEXT STAGE / FUTURE",
+              "planned_start": "Planned",
+              "items": [
+                "Complete and validate the current work in progress",
+                "Validate the full local operating environment",
+                "Research hardware requirements and deployment cost",
+                "Run pilot-store end-to-end testing",
+                "Confirm production deployment requirements",
+                "--"
+              ]
+            }
+          ]
+        },
+        "release_plan": {
+          "original_plan_start": "13 AUGUST 2026",
+          "original_plan_end": "N/A",
+          "current_forecast_start": "N/A",
+          "current_forecast_end": "N/A",
+          "delay_days": "No confirmed delay reported",
+          "schedule_status": "ON TRACK",
+          "milestones": [
+            {
+              "milestone": "Core Camera Pipeline",
+              "original_plan": "Delivered",
+              "current_forecast": "COMPLETED",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Backend and Risk Engine",
+              "original_plan": "Delivered",
+              "current_forecast": "COMPLETED",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "AI Detection and Tracking",
+              "original_plan": "Delivered",
+              "current_forecast": "COMPLETED",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Dashboard Review Workflow",
+              "original_plan": "Delivered",
+              "current_forecast": "COMPLETED",
+              "variance": "0 days",
+              "status": "GREEN"
+            },
+            {
+              "milestone": "Windows Connector Installer",
+              "original_plan": "Stability improvements",
+              "current_forecast": "IN PROGRESS",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Local Operating Environment",
+              "original_plan": "Hardware and architecture analysis",
+              "current_forecast": "RESEARCH REQUIRED",
+              "variance": "0 days",
+              "status": "RED"
+            },
+            {
+              "milestone": "End-to-End Pilot Validation",
+              "original_plan": "Live-camera testing required",
+              "current_forecast": "IN PROGRESS",
+              "variance": "0 days",
+              "status": "AMBER"
+            },
+            {
+              "milestone": "Production Rollout",
+              "original_plan": "Pending pilot validation",
+              "current_forecast": "NEXT STAGE",
+              "variance": "0 days",
+              "status": "RED"
+            }
+          ]
+        },
+        "effort_summary": {
+          "original_allocation": "52",
+          "consumed_to_date": "Not measured",
+          "forecast_remaining": "Not measured",
+          "forecast_total": "Not measured",
+          "overrun": "0 DAYS",
+          "budget_status": "NOT ASSESSED",
+          "consumed_percentage": 0,
+          "consumed_text": "Not measured consumed"
+        },
+        "what_changed_this_week": {
+          "schedule_change": "No schedule change reported.",
+          "scope_change": "**Local Implementation Planning:** Planned the local implementation approach for the complete system; **Hardware Review:** Reviewed hardware requirements and the areas required for local deployment cost estimation; **Architecture Review:** Discussed the local environment, system architecture, and performance considerations; **Evaluation Criteria:** Aligned on hardware evaluation criteria, including GPU, storage, and network requirements; --",
+          "scope_change_tag": "Approved",
+          "effort_change": "No effort change reported.",
+          "note": "No change to the overall project scope; the project remains on track"
+        },
+        "risks_and_attention": {
+          "top_risks": [
+            {
+              "description": "Connector stability requires final validation",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Local hardware requirements and cost are not yet confirmed",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Live-camera end-to-end testing remains incomplete",
+              "severity": "MEDIUM"
+            },
+            {
+              "description": "Production requirements depend on pilot results",
+              "severity": "LOW"
+            }
+          ],
+          "decisions_required": [
+            {
+              "description": "Confirm the pilot camera count, resolution, frame rate, and retention period",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Confirm the target local AI server hardware and budget",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Confirm the production AI model and licensing approach",
+              "due_date": "N/A"
+            },
+            {
+              "description": "Approve the pilot validation schedule",
+              "due_date": "N/A"
+            }
+          ],
+          "escalation": "- No critical escalations identified. Continue monitoring validation results, hardware requirements, and connector reliability.\n\n---"
+        },
+        "at_a_glance": {
+          "overall_progress_percent": 0,
+          "time_elapsed_percent": 0,
+          "effort_consumed_percent": 0,
+          "insight_note": "Core Phase 1A capabilities are implemented. Local deployment research, hardware cost analysis, and pilot validation are the next priorities."
+        }
+      }
+    }
+  },
   "ONEXSO_HRMS": {
     "project_id": "ONEXSO_HRMS",
     "project_name": "ONEXSO HRMS",
@@ -1107,7 +1322,7 @@
         "scope_journey": {
           "delivered_releases": [
             {
-              "name": "DELIVERED / PREVIOUS",
+              "name": "DELIVERED BASELINE",
               "go_live": "",
               "items": [
                 "None yet - Release 1 is the first release and is currently in progress (not yet gone live)"
@@ -1156,7 +1371,7 @@
           },
           "future_releases": [
             {
-              "name": "FUTURE / UPCOMING",
+              "name": "NEXT STAGE / FUTURE",
               "planned_start": "Planned",
               "items": [
                 "**RELEASE 2 (candidate scope, pending confirmation)** - drawn from the current known gap list: Work Management time tracking, subtasks and Productivity Validation; Work Management/Organization reports & dashboards; Support Center backend; Stripe checkout/payment-collection flow; Google/Outlook calendar sync; Device Administration (asset inventory); data-privacy workflows (DSAR/retention); centralized audit trail; global search; System Control (maintenance mode/job control/release tracking)",

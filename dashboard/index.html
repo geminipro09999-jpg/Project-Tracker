@@ -931,6 +931,16 @@
               variance: '0 days',
               status: colStatus
             });
+          } else if(cols.length === 3) {
+            const mStat = cols[1].toUpperCase();
+            const colStatus = mStat.includes('COMPLET') ? 'GREEN' : (mStat.includes('PROGRESS') || mStat.includes('START') ? 'AMBER' : 'RED');
+            data.release_plan.milestones.push({
+              milestone: cols[0],
+              original_plan: cols[2],
+              current_forecast: cols[1],
+              variance: '0 days',
+              status: colStatus
+            });
           } else if(cols.length >= 2) {
             const mStat = cols[1].toUpperCase();
             const colStatus = mStat.includes('COMPLET') ? 'GREEN' : (mStat.includes('PROGRESS') || mStat.includes('START') ? 'AMBER' : 'RED');

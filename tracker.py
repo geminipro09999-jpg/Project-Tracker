@@ -29,7 +29,9 @@ def parse_markdown(md_text):
     data['company'] = get_field(r'\*\*(?:Company):\*\*\s*(.*?)\n', "TIC INCUBATOR")
     
     proj_id = get_field(r'\*\*(?:Project ID):\*\*\s*(.*?)\n', "N/A")
-    data['project_id'] = proj_id if proj_id not in ["N/A / Not Provided", "N/A", "TBD", ""] else ""
+    if proj_id.lower() in ["n/a / not provided", "not provided", "n/a", "tbd", ""]:
+        proj_id = ""
+    data['project_id'] = proj_id
 
     data['client'] = get_field(r'\*\*(?:Client):\*\*\s*(.*?)\n', "CLIENT")
     
@@ -92,11 +94,11 @@ def parse_markdown(md_text):
     }
 
     # Delivered Releases
-    deliv_match = re.search(r'###\s*(?:Delivered Releases|Delivered / Completed|Delivered / Previous Release|Delivered|Previous / Available|Completed This Period).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    deliv_match = re.search(r'###\s*(?:Delivered Releases|Delivered Baseline|Delivered / Completed|Delivered / Previous Release|Delivered|Previous / Available|Completed This Period).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if deliv_match:
         items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', deliv_match.group(1)) if x.strip()]
         if items:
-            scope_journey["delivered_releases"] = [{"name": "DELIVERED / PREVIOUS", "go_live": "", "items": items}]
+            scope_journey["delivered_releases"] = [{"name": "DELIVERED BASELINE", "go_live": "", "items": items}]
 
     # Current Release Section
     curr_scope_match = re.search(r'###\s*(?:Current Release|Current Phase|Current Work|This Week).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
@@ -157,17 +159,17 @@ def parse_markdown(md_text):
                 scope_journey["current_release"]["core_modules"] = list_items
 
     # Future Releases
-    fut_match = re.search(r'###\s*(?:Future Releases|Future Release|Post-Release / Next|Next Phase|Next Week|Upcoming / Pending).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
+    fut_match = re.search(r'###\s*(?:Future Releases|Future Release|Next Stage|Post-Release / Next|Next Phase|Next Week|Upcoming / Pending).*?\n(.*?)(?=###|\n##|\Z)', md_text, re.DOTALL | re.IGNORECASE)
     if fut_match:
         items = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', fut_match.group(1)) if x.strip()]
         if items:
-            scope_journey["future_releases"] = [{"name": "FUTURE / UPCOMING", "planned_start": "Planned", "items": items}]
+            scope_journey["future_releases"] = [{"name": "NEXT STAGE / FUTURE", "planned_start": "Planned", "items": items}]
 
     data['scope_journey'] = scope_journey
 
     # Section 2: Release Plan
     rel_plan = {
-        "original_plan_start": get_field(r'\*\*(?:Original Plan Start|Original Start Date):\*\*\s*(.*?)\n', "N/A"),
+        "original_plan_start": get_field(r'\*\*(?:Original Plan Start|Original Start Date|Release Start):\*\*\s*(.*?)\n', "N/A"),
         "original_plan_end": get_field(r'\*\*(?:Original Plan End|Original End Date):\*\*\s*(.*?)\n', "N/A"),
         "current_forecast_start": get_field(r'\*\*(?:Current Forecast Start):\*\*\s*(.*?)\n', "N/A"),
         "current_forecast_end": get_field(r'\*\*(?:Current Forecast End):\*\*\s*(.*?)\n', "N/A"),
@@ -200,6 +202,17 @@ def parse_markdown(md_text):
                     "variance": "0 days",
                     "status": status_color
                 })
+            elif len(cols) == 3:
+                # 3-column format: Milestone | Status | Current Position
+                m_status = cols[1].upper()
+                status_color = "GREEN" if "COMPLET" in m_status else ("AMBER" if "PROGRESS" in m_status or "START" in m_status else "RED")
+                rel_plan["milestones"].append({
+                    "milestone": cols[0],
+                    "original_plan": cols[2],
+                    "current_forecast": cols[1],
+                    "variance": "0 days",
+                    "status": status_color
+                })
             elif len(cols) >= 2:
                 # 2-column table format (Milestone | Status)
                 m_status = cols[1].upper()
@@ -214,7 +227,7 @@ def parse_markdown(md_text):
     data['release_plan'] = rel_plan
 
     # Section 3: Effort Summary
-    orig_alloc = get_field(r'\*\*(?:Original Allocation|Total Allocated Man-Days):\*\*\s*(.*?)\n', "N/A")
+    orig_alloc = get_field(r'\*\*(?:Original Allocation|Total Allocated Man-Days|Total Allocated Effort):\*\*\s*(.*?)\n', "N/A")
     cons_td = get_field(r'\*\*(?:Consumed To Date|Approx\. Consumed|Effort Consumed \(Approx\.\)):\*\*\s*(.*?)\n', "N/A")
     fore_rem = get_field(r'\*\*(?:Forecast Remaining):\*\*\s*(.*?)\n', "N/A")
     fore_tot = get_field(r'\*\*(?:Forecast Total|Forecast Total \(Project\)):\*\*\s*(.*?)\n', "N/A")
@@ -248,17 +261,9 @@ def parse_markdown(md_text):
     if sec4_match:
         s4_text = sec4_match.group(1)
         if not scope_change:
-            comp_bullets = re.search(r'###\s*(?:Completed Work|Delivered|Work In Progress).*?\n(.*?)(?=###|\n##|\Z)', s4_text, re.DOTALL | re.IGNORECASE)
-            if comp_bullets:
-                bullets = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', comp_bullets.group(1)) if x.strip()]
-                if bullets:
-                    scope_change = "; ".join(bullets)
-        if not effort_change:
-            enh_bullets = re.search(r'###\s*(?:Enhancements|Newly Added Tasks|Support / Development Setup).*?\n(.*?)(?=###|\n##|\Z)', s4_text, re.DOTALL | re.IGNORECASE)
-            if enh_bullets:
-                bullets = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', enh_bullets.group(1)) if x.strip()]
-                if bullets:
-                    effort_change = "; ".join(bullets)
+            bullets = [x.strip() for x in re.findall(r'[-*]\s*(.*?)\n', s4_text) if x.strip() and not any(k in x for k in ["Material Notes", "Schedule Change"])]
+            if bullets:
+                scope_change = "; ".join(bullets)
 
     data['what_changed_this_week'] = {
         "schedule_change": sched_change if sched_change else "No schedule change reported.",
